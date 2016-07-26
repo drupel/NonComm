@@ -231,7 +231,16 @@ Lemma~\ref{le:Dyck path recursion} establishes a canonical order preserving bije
     F_{P_0}\big(Y(\overline{\omega_H})\big)=Y'\big(\overline{\varphi^*\omega_H}\big).
   \end{equation}
 \end{claim}
-To establish this claim we will need to further decompose each $Y(\overline{\omega_H})$ by studying the natural partial order on $\overline{\omega_H}$ given by $\omega_{V,1}\le\omega_{V,2}$ if $\omega_{V,1}(v)\le\omega_{V,2}(v)$ for all $v\in V_m$.  The result will be deduced from a detailed understanding of the maximal elements of $\overline{\omega_H}$ under this partial order.  To accomplish this we need more notation which better encapsulates the compatibility conditions (HGC) and (VGC).
+To establish this claim we will need to further decompose each $Y(\overline{\omega_H})$ by studying the natural partial order on $\overline{\omega_H}$ given by $\omega_{V,1}\le\omega_{V,2}$ if $\omega_{V,1}(v)\le\omega_{V,2}(v)$ for all $v\in V_m$.  The result will be deduced from a detailed understanding of the maximal elements of $\overline{\omega_H}$ under this partial order.  
+
+The maximal elements of $\overline{\omega_H}$ admit a ``revlex'' total ordering.  More precisely, for maximal elements $\omega_{V,1}$ and $\omega_{V,2}$ we write $\omega_{V,1}\prec\omega_{V,2}$ if there exists $v_i\in V$ such that $\omega_{V,1}(v_i)<\omega_{V,2}(v_i)$ but $\omega_{V,1}(v_j)=\omega_{V,2}(v_j)$ for $j>i$.  Write $\omega_V^{(t)}\prec\cdots\prec\omega_V^{(1)}$ for the maximal elements of $\overline{\omega_H}$ (where $t$ depends on $\omega_H$ but we suppress it from all notation).  Note that for $1\le r\le t$, we have $\omega_V^{(r)}(v)=0$ for $v\in\sh(\omega_H)\setminus\rsh(\omega_H)$ and $\omega_V^{(r)}(v)=d_2$ for $v\in V\setminus\sh(\omega_H)$.  
+
+Inductively define a partition $\overline{\omega_H}=\overline{\omega_H}^{(1)}\sqcup\cdots\sqcup\overline{\omega_H}^{(t)}$ as follows:
+\begin{itemize}
+ \item set $\overline{\omega_H}^{(1)}=\big\{\omega_V\in\overline{\omega_H}:\omega_V\le\omega_V^{(1)}\big\}$;
+ \item for $1<r\le t$, set $\overline{\omega_H}^{(r)}=\Big\{\omega_V\in\overline{\omega_H}\setminus\big(\overline{\omega_H}^{(1)}\sqcup\cdots\sqcup\overline{\omega_H}^{(r-1)}\big):\omega_V\le\omega_V^{(r)}\Big\}$.
+\end{itemize}
+Now define the Laurent polynomial $Y\big(\overline{\omega_H}^{(r)}\big)=\sum\limits_{\omega_V\in\overline{\omega_H}^{(r)}} Y(\omega_H,\omega_V)$.  Note that $Y(\overline{\omega_H})=\sum\limits_{r=1}^t  Y\big(\overline{\omega_H}^{(r)}\big)$.  We establish Claim~\ref{cl:horizontal to vertical} by studying how the $Y\big(\overline{\omega_H}^{(r)}\big)$ behave under the action of $F_{P_0}$.  To accomplish this we need more notation which better encapsulates the compatibility conditions (HGC) and (VGC).
 
 For a horizontal grading $\omega_H$ and a subpath $ee'\subset D_m$, define the \emph{horizontal shadow statistic}
 \[f_{\omega_H}(ee'):=-|ee'|_V+\sum\limits_{h\in(ee')_H}\omega_H(h).\]
@@ -244,9 +253,9 @@ for each vertical grading $\omega_V$.  It immediately follows from the definitio
 \end{align*}
 whenever $ee'''=ee'\amalg e''e'''$.
 
-Apart from their relationship to the compatibility conditions (HGC) and (VGC), the functions $f_{\omega_H}$ and $f_{\omega_V}$ encode the following important information.  For each subpath $ee'\subset D$ we obtain a factor $X_{\omega_H,\omega_V}(ee')$ of the monomial $X_{\omega_H,\omega_V}$ by only multiplying the weights of edges along the path $ee'$.
+Apart from their relationship to the compatibility conditions (HGC) and (VGC), the functions $f_{\omega_H}$ and $f_{\omega_V}$ encode the following important information.  For each subpath $ee'\subset D$ we obtain a factor $Y_{ee'}(\omega_H,\omega_V)$ of the monomial $Y(\omega_H,\omega_V)$ by only multiplying the weights of edges along the path $ee'$.
 \begin{lemma}
-  The quantities $f_{\omega_H}(ee')$ and $f_{\omega_V}(ee')$ record the total $Y$-degree and the total $X$-degree respectively of the monomial $X_{\omega_H,\omega_V}(ee')$.
+  The quantities $f_{\omega_H}(ee')$ and $f_{\omega_V}(ee')$ record the total $Y$-degree and the total $X$-degree respectively of the monomial $Y_{ee'}(\omega_H,\omega_V)$.
 \end{lemma}
 \begin{proof}
   A horizontal edge $h\in(ee')_H$ contributes a factor of $p_{\omega_H(h)}Y^{\omega_H(h)}X^{-1}$ to $X_{\omega_H,\omega_V}(ee')$ while a vertical edge $v\in(ee')_V$ contributes a factor of $p'_{\omega_V(v)}X^{\omega_V(v)+1}Y^{-1}X^{-1}$.  The result now follows by comparing the total $Y$- and $X$-degrees of $X_{\omega_H,\omega_V}(ee')$ with the definitions of $f_{\omega_H}(ee')$ and $f_{\omega_V}(ee')$ respectively.
@@ -265,14 +274,6 @@ By \cite[Lemma~4.10]{rupel2}, any two local shadow paths $D(h;\omega_H)$ and $D(
 
 
 
-
-
-Note for any $1\le r\le t$ that $\omega_V^{(r)}(v)=0$ for $v\in\sh(\omega_H)\setminus\rsh(\omega_H)$ and $\omega_V^{(r)}(v)=d_2$ for $v\in V\setminus\sh(\omega_H)$.  Inductively define a partition $\overline{\omega_H}=\overline{\omega_H}^{(1)}\sqcup\cdots\sqcup\overline{\omega_H}^{(t)}$ as follows:
-\begin{itemize}
- \item set $\overline{\omega_H}^{(1)}=\big\{\omega_V\in\overline{\omega_H}:\omega_V\le\omega_V^{(1)}\big\}$;
- \item for $1<r\le t$, set $\overline{\omega_H}^{(r)}=\Big\{\omega_V\in\overline{\omega_H}\setminus\big(\overline{\omega_H}^{(1)}\sqcup\cdots\sqcup\overline{\omega_H}^{(r-1)}\big):\omega_V\le\omega_V^{(r)}\Big\}$.
-\end{itemize}
-Now define the Laurent polynomial $X_{\overline{\omega_H}^{(r)}}=\sum\limits_{\omega_V\in\overline{\omega_H}^{(r)}} X_{\omega_H,\omega_V}$.  Note that $X_{\overline{\omega_H}}=\sum\limits_{r=1}^t  X_{\overline{\omega_H}^{(r)}}$.  Writing $\rsh(\omega_H)=\{\nu_1,\ldots,\nu_t\}$ we may describe $X_{\overline{\omega_H}^{(r)}}$ more precisely as follows.
 \begin{lemma}
  For any horizontal grading $\omega_H$ and $1\le r\le t$, there is a factorization $X_{\overline{\omega_H}^{(r)}}=W_1\cdots W_{a_1+a_2}$ where $W_e\in\AA_+\langle X^{\pm1},Y^{\pm1}\rangle$ is given by
  \[W_e=\begin{cases}p_{1,\omega_H(e)}X^{-1}Y^{\omega_H(e)} & \text{ if $e\in H$;}\\ \overline{P}_2(X)Y^{-1} & \text{ if $e\in V\setminus\sh(\omega_H);$}\\ Y^{-1} & \text{ if $e\in\sh(\omega_H)\setminus\rsh(\omega_H)$;}\\ p_{2,d_2-\omega_V^{(r)}(e)}X^{\omega_V^{(r)}(e)}Y^{-1} & \text{ if $e\in\rsh(\omega_H)$ and $e<\nu_r$;}\\ \sum\limits_{\nu=0}^{\omega_V^{(r)}(e)}p_{2,d_2-\nu}X^\nu Y^{-1} & \text{ if $e\in\rsh(\omega_H)$ and $\nu_r\le e$.}\end{cases}\]
