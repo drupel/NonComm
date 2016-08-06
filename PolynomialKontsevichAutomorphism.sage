@@ -1,13 +1,13 @@
 class PolynomialKontsevichAutomorphism(SageObject):
     def __init__(self):
 
-        data_dir = "/Users/dylanrupel/.sage/bin/data/"
-        computation_dir = "/Users/dylanrupel/Documents/Math/Research/Computations/"
+        self.data_dir = "/Users/dylanrupel/.sage/bin/data/"
+        self.computation_dir = "/Users/dylanrupel/Documents/Math/Research/Computations/"
 
         S.<v> = ZZ[]
         self.S = S
         self.Q = S.fraction_field()
-        base_ring.<j11,j21,j22,j23,j24> = Q[]
+        base_ring.<j11,j21,j22,j23,j24> = self.Q[]
         self.base_ring = base_ring
 
         """
@@ -15,8 +15,8 @@ class PolynomialKontsevichAutomorphism(SageObject):
         """
         self.P1 = [[0,1],[1,1]] #formal polynomial, first coordinate is the exponent, second coordinate is the coefficient
         self.P1rev = [[0,1],[1,1]]
-        self.P2 = [[0,1],[1,j23],[2,j22],[3,j21],[4,1]]
-        self.P2rev = [[0,1],[1,j21],[2,j22],[3,j23],[4,1]]
+        self.P2 = [[0,1],[1,1],[2,1],[3,1],[4,1]]
+        self.P2rev = [[0,1],[1,1],[2,1],[3,1],[4,1]]
 
         self.comm_matrix = matrix([[0,1],[-1,0]])
         self.comm_matrix.set_immutable()
@@ -27,7 +27,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
         self.X2 = self.B[(0,1)]
         self.X2i = self.B[(0,-1)]
         
-        F.<X,Y,Z> = FreeAlgebra(self.base_ring,4)
+        F.<X,Y,Z> = FreeAlgebra(self.base_ring,3)
         self.X = X
         self.Y = Y
         self.Z = Z
@@ -92,7 +92,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
     
             working_dir = "Generalized_Cluster_Variables/NonCommutative/"
             filename = "d1="+str(self.P1[self.P1.__len__()-1][0])+",d2="+str(self.P2[self.P2.__len__()-1][0])+".tex"
-            TeXFile=open(computation_dir+working_dir+filename,'w')
+            TeXFile=open(self.computation_dir+working_dir+filename,'w')
             TeXFile.write("\\documentclass{article}\n")
             TeXFile.write("\\usepackage{amsmath, amssymb, latexsym}\n")
             TeXFile.write("\\usepackage[margin=1in]{geometry}\n\n")
@@ -132,21 +132,21 @@ class PolynomialKontsevichAutomorphism(SageObject):
             TeXFile.write(self.P2_str+"$.\\\\\n\n")
             for n in range(0,7):
                 TeXFile.write("$Y_{"+str(n+1)+"}=")
-                noncomm_var = self.fsPKont(self.P1,self.P2,n)
+                noncomm_var = self.fsPKont(n)
                 TeXFile.write(str(noncomm_var)+"$\\\\\n\n")
     
             TeXFile.write("\\end{document}")
             TeXFile.close()
             
             import subprocess
-            subprocess.call(['pdflatex', '-halt-on-error', filename], cwd=computation_dir+working_dir, stdout=subprocess.PIPE)
+            subprocess.call(['pdflatex', '-halt-on-error', filename], cwd=self.computation_dir+working_dir, stdout=subprocess.PIPE)
     
     
     def compute_gen_quantum_variables(self):
     
             working_dir = "Generalized_Cluster_Variables/Quantum/"
             filename = "d1="+str(self.P1[self.P1.__len__()-1][0])+",d2="+str(self.P2[self.P2.__len__()-1][0])+".tex"
-            TeXFile=open(computation_dir+working_dir+filename,'w')
+            TeXFile=open(self.computation_dir+working_dir+filename,'w')
             TeXFile.write("\\documentclass{article}\n")
             TeXFile.write("\\usepackage{amsmath, amssymb, latexsym}\n")
             TeXFile.write("\\usepackage[margin=1in]{geometry}\n\n")
@@ -186,7 +186,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             TeXFile.write(self.P2_str+"$.\\\\\n\n")
             for n in range(0,7):
                 TeXFile.write("$X_{"+str(n+1)+"}=")
-                noncomm_var = self.fsPKont(self.P1,self.P2,n)
+                noncomm_var = self.fsPKont(n)
                 quantum_var = quantum_specialization(noncomm_var,self.P1)
                 TeXFile.write(self.A.latex_element(quantum_var)+"$\\\\\n\n")
     
@@ -194,7 +194,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             TeXFile.close()
             
             import subprocess
-            subprocess.call(['pdflatex', '-halt-on-error', filename], cwd=computation_dir+working_dir, stdout=subprocess.PIPE)
+            subprocess.call(['pdflatex', '-halt-on-error', filename], cwd=self.computation_dir+working_dir, stdout=subprocess.PIPE)
     
     
     def compute_gen_variables_coeff(self):
@@ -203,7 +203,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             d1 = self.P1[self.P1.__len__()-1][0]
             d2 = self.P2[self.P2.__len__()-1][0]
             filename = "d1="+str(d1)+",d2="+str(d2)+"-coefficients.tex"
-            TeXFile=open(computation_dir+working_dir+filename,'w')
+            TeXFile=open(self.computation_dir+working_dir+filename,'w')
             TeXFile.write("\\documentclass{article}\n")
             TeXFile.write("\\usepackage{amsmath, amssymb, latexsym}\n")
             TeXFile.write("\\usepackage[margin=1in]{geometry}\n\n")
@@ -232,7 +232,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             TeXFile.write(self.P2_str+"$.\\\\\n\n")
             for n in range(0,7):
                 TeXFile.write("$X_{"+str(n+1)+"}=")
-                noncomm_var = self.fsPKont(self.P1,self.P2,n)
+                noncomm_var = self.fsPKont(n)
                 quantum_var = quantum_specialization(noncomm_var,self.P1)
     
                 sup = quantum_var.support()
@@ -281,7 +281,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             TeXFile.close()
             
             import subprocess
-            subprocess.call(['pdflatex', '-halt-on-error', filename], cwd=computation_dir+working_dir, stdout=subprocess.PIPE)
+            subprocess.call(['pdflatex', '-halt-on-error', filename], cwd=self.computation_dir+working_dir, stdout=subprocess.PIPE)
     
     
     def quantum_specialization(self, element,pol):
@@ -687,7 +687,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
                 
             Keys = suffix_dict.keys()
             Keys.sort()
-            while Keys != [self.(1)]:
+            while Keys != [self.M(1)]:
                 key = Keys.pop()
                 entry = suffix_dict.pop(key)
                 elt_list = key._element_list
