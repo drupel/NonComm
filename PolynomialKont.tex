@@ -68,7 +68,7 @@
  \begin{abstract}
   We study polynomial generalizations of the Kontsevich automorphisms acting on the skew-field of formal rational expressions in two non-commuting variables.  Our main result is the Laurentness and pseudo-positivity of iterations of these automorphisms.  The resulting expressions are described combinatorially using a generalization (studied in \cite{rupel2}) of the combinatorics of compatible pairs in a maximal Dyck path developed by Lee, Li, and Zelevinsky in \cite{lee-li-zelevinsky}.  
 
-  By specializing to commuting variables we recover positive expressions for the rank 2 generalized cluster variables from \cite{rupel2}.  By specializing to $q$-commuting variables we obtain positive expressions for the rank 2 quantum generalized cluster variables from \cite{igusa-rupel-todorov}.  In the case that all internal exchange coefficients are zero, this provides a combinatorial construction of counting polynomials for Grassmannians of submodules in exceptional representations of valued quivers with two vertices.
+  By specializing to commuting variables we recover positive expressions for the rank 2 generalized cluster variables from \cite{rupel2}.  By specializing to $q$-commuting variables we obtain positive expressions for rank 2 quantum generalized cluster variables.  In the case that all internal exchange coefficients are zero, this provides a combinatorial construction of counting polynomials for Grassmannians of submodules in exceptional representations of valued quivers with two vertices.
  \end{abstract}
  \maketitle
 
@@ -92,12 +92,12 @@ with $p_{1,0}=p_{1,d_1}=p_{2,0}=p_{2,d_2}=1$.  Set $\AA_+=\ZZ_{\ge0}[p_{1,i},p_{
  are contained in the semiring $\AA_+\langle X^{\pm1},Y^{\pm1}\rangle\subset\KK$ of pseudo-positive non-commutative Laurent polynomials.
 \end{maintheorem}
 \begin{remark*}
- In the case when $P_1$ and $P_2$ are monic and quadratic but $P_1(0)=P_2(0)\ne1$ this result also holds and can be deduced from the Main Theorem by passing to an algebraic extension of $\kk$, then rescaling all variables.  Also, since $QY=F_P(X)$ for any polyonomial $P$, we have $ QY_m=X_{m+1}$ for $m\ge0$; in particular, the claim for the $X_m$ follows from the claim for the $Y_m$.
+ In the case when $P_1$ and $P_2$ are monic and of the same degree but $P_1(0)=P_2(0)\ne1$, this result also holds and can be deduced from the Main Theorem by passing to an algebraic extension of $\kk$, then rescaling all variables.  The same is true when the coefficients $p_{1,0},p_{1,d_1},p_{2,0},p_{2,d_2}$ are not all equal to $1$ but satisfy a balancing condition which we leave as an exercise for the reader to work out.  Also, since $QY=F_P(X)$ for any polyonomial $P$, we have $ QY_m=X_{m+1}$ for $m\ge0$; in particular, the claim for the $X_m$ follows from the claim for the $Y_m$.
 \end{remark*}
 
 We will prove the Main Theorem by providing a combinatorial construction of the elements $Y_m$.  This combinatorics was studied in \cite{rupel2} building upon the notion of compatible pairs in a maximal Dyck path developed by Lee, Li, and Zelevinsky in \cite{lee-li-zelevinsky}.
 
-For $\bfa=(a_1,a_2)\in\ZZ_{\ge0}^2$, let $D=D_\bfa$ denote the lattice path in the rectangle $[0,a_1]\times[0,a_2]$ which begins at $(0,0)$ takes East and North steps to end at $(a_1,a_2)$ and is maximal among all such paths that never pass above the main diagonal of the rectangle $[0,a_1]\times[0,a_2]$.  In other words, no lattice point of $D$ lies strictly above the main diagonal and any lattice point strictly above $D$ lies strictly above the main diagonal.
+For $\bfa=(a_1,a_2)\in\ZZ_{\ge0}^2$, let $D=D_\bfa$ denote the lattice path in the rectangle $[0,a_1]\times[0,a_2]$ which begins at $(0,0)$ takes unit length East and North steps to end at $(a_1,a_2)$ and is maximal among all such paths that never pass above the main diagonal of the rectangle $[0,a_1]\times[0,a_2]$.  In other words, no lattice point of $D$ lies strictly above the main diagonal and any lattice point strictly above $D$ lies strictly above the main diagonal.
 
 Label the edges of $D$ as $E=\{1,\ldots,a_1+a_2\}$, where this bijection of ordered sets respects the natural order on edges from $(0,0)$ to $(a_1,a_2)$.  There is a partition $E=H\sqcup V$, where $H$ (resp. $V$) denotes the set of horizontal (resp. vertical) edges of $D$. 
 
@@ -109,7 +109,7 @@ We abbreviate $|ee'|_H:=|(ee')_H|$ and $|ee'|_V:=|(ee')_V|$.
 \end{remark}
 
 \begin{definition}\label{def:compatibility}
-  A (\emph{positive}) \emph{grading} $\omega:E\to\ZZ_{\ge0}$ is called \emph{compatible} if: for every $h\in H$ and $v\in V$, there exists an edge $e$ along the path $hv$ so that at least one of the following holds:
+  A (\emph{positive}) \emph{edge grading} $\omega:E\to\ZZ_{\ge0}$ is called \emph{compatible} if: for every $h\in H$ and $v\in V$, there exists an edge $e$ along the path $hv$ so that at least one of the following holds:
   \begin{align*}
     \text{(HGC)}\quad\quad\quad e\ne v\quad&\text{ and }\quad |he|_V=\sum\limits_{h'\in(he)_H} \omega(h');\\
     \text{(VGC)}\quad\quad\quad e\ne h\quad&\text{ and }\quad |ev|_H=\sum\limits_{v'\in(ev)_V} \omega(v').
@@ -126,8 +126,8 @@ For a $(d_1,d_2)$-bounded grading $\omega$, we associate the non-commutative mon
                 \end{cases}
 \end{equation}
 Thus we may associate a non-commutative Laurent monomial to each $(d_1,d_2)$-bounded grading $\omega$ by taking the product of the associated non-commutative weights in the natural order along the path $D$:
-\[Y(\omega):=\wt_\omega(1)\cdots\wt_\omega(a_1+a_2).\]
-Define $Y_\bfa=\sum\limits_\omega Y(\omega)$, where the sum ranges over all compatible gradings $\omega$ on the edges of $D_\bfa$.
+\[Y_\bfa(\omega):=\wt_\omega(1)\cdots\wt_\omega(a_1+a_2).\]
+Define $Y_\bfa=\sum\limits_\omega Y_\bfa(\omega)$, where the sum ranges over all compatible gradings $\omega$ on the edges of $D_\bfa$.
 
 Our interest will be with the maximal Dyck paths $D_m:=D_{\bfa_m}$ for integer vectors $\bfa_m$, $m\ge1$ defined recursively by
 \begin{equation}\label{eq:roots recursive}
@@ -160,8 +160,8 @@ In order to establish a recursive structure for $D_m$ we will show that the maxi
 
 \begin{lemma}\label{le:Dyck path recursion}\mbox{}
   \begin{enumerate}
-    \item The maximal Dyck path $D'_{m+1}$ can be obtained from $D_m$ by replacing each horizontal edge which is immediately followed by exactly $\ell$ vertical edges with $d_1-\ell$ horizontal edges followed by a vertical edge.
-    \item The maximal Dyck path $D_{m+1}$ can be obtained from $D'_m$ by replacing each horizontal edge which is immediately followed by exactly $\ell$ vertical edges with $d_2-\ell$ horizontal edges followed by a vertical edge.
+    \item The maximal Dyck path $D'_{m+1}$ can be obtained from $D_m$ via replacing each horizontal edge, together with the $\ell$ vertical edges which immediately follow it, by $d_1-\ell$ horizontal edges followed by a vertical edge.
+    \item The maximal Dyck path $D_{m+1}$ can be obtained from $D'_m$ via replacing each horizontal edge, together with the $\ell$ vertical edges which immediately follow it, by $d_2-\ell$ horizontal edges followed by a vertical edge.
   \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -213,7 +213,7 @@ The proof of Theorem~\ref{th:combinatorial construction} will go by induction, a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Combinatorics of compatible pairs} 
 
-In order to prove Theorem~\ref{th:combinatorial construction}, we will decompose $Y_{\bfa_m}$ into nicely factorizable summands for which the action of $F_{P_0}$ is simply understood.  For this we will begin by separating a grading $\omega$ into into its horizontal and vertical components.
+In order to prove Claim~\ref{cl:combinatorial recursion}, we will decompose $Y_{\bfa_m}$ into nicely factorizable summands for which the action of $F_{P_0}$ is simply understood.  For this we will begin by separating a grading $\omega$ into into its horizontal and vertical components.
 
 Let $\omega:E\to\ZZ_{\ge0}$ be a grading on the edges of $D_m$.  Write $|\omega|_H=\sum\limits_{h\in H_m} \omega(h)$ and $|\omega|_V=\sum\limits_{v\in V_m} \omega(v)$.  It will be convenient to write $\omega_H$ and $\omega_V$ for the restriction of $\omega$ to $H_m$ and to $V_m$ respectively, we refer to these as \emph{horizontal gradings} and \emph{vertical gradings} respectively.  Then we write $|\omega_H|:=|\omega|_H$ and $|\omega_V|:=|\omega|_V$.  We will often consider $\omega$ to be the pair $(\omega_H,\omega_V)$ and refer to $\omega_H$ and $\omega_V$ as being compatible if one of the conditions of Definition~\ref{def:compatibility} is satisfied.  Since the first condition only involves $\omega_H$ we refer to it as the \emph{horizontal grading condition} (HGC).  Similarly, we refer to the second condition as the \emph{vertical grading condition} (VGC).  For a horizontal grading $\omega_H$, write $\overline{\omega_H}$ for the set of vertical gradings $\omega_V$ for which $(\omega_H,\omega_V)$ is compatible.  Define $\overline{\omega_V}$ for a vertical grading $\omega_V$ similarly.  With this notation we obtain the following initial decomposition of $Y_{\bfa_m}$:
 \begin{equation}\label{eq:Y decomposition}
@@ -224,16 +224,37 @@ There is an analogous decomposition
   Y'_{\bfa'_{m+1}}=\sum_{\omega'_V:V'_{m+1}\to[0,d_1]}Y'\Big(\overline{\omega'_V}\Big),\qquad Y'\Big(\overline{\omega'_V}\Big):=\sum_{\omega'_H\in\overline{\omega'_V}}Y'(\omega'_H,\omega'_V).
 \end{equation}
 
-Lemma~\ref{le:Dyck path recursion} establishes a canonical order preserving bijection between the vertical edges $V'_{m+1}$ of $D'_{m+1}$ and the horizontal edges $H_m$ of $D_m$ which we write as $\varphi=\varphi_m:V'_{m+1}\to H_m$, $\varphi(h_i)=v'_i$ for $1\le i\le u_{m,1}$.  Thus we obtain a bijection from $d_1$-bounded horizontal gradings on $D_m$ to $d_1$-bounded vertical gradings on $D'_{m+1}$ taking a horizontal grading $\omega_H:H_m\to[0,d_1]$ to the vertical grading $\varphi^*\omega_H:V'_{m+1}\to[0,d_1]$ given by $\varphi^*\omega_H(v'_i)=d_1-\omega_H(h_i)$.  Then Claim~\ref{cl:combinatorial recursion}, and thus Theorem~\ref{th:combinatorial construction}, is an immediate consequence of the following.
+Lemma~\ref{le:Dyck path recursion} establishes a canonical order preserving bijection between the vertical edges $V'_{m+1}$ of $D'_{m+1}$ and the horizontal edges $H_m$ of $D_m$ which we write as $\varphi=\varphi_m:V'_{m+1}\to H_m$, $\varphi(v'_i)=h_i$ for $1\le i\le u_{m,1}$.  Thus we obtain a bijection from $d_1$-bounded horizontal gradings on $D_m$ to $d_1$-bounded vertical gradings on $D'_{m+1}$ taking a horizontal grading $\omega_H:H_m\to[0,d_1]$ to the vertical grading $\varphi^*\omega_H:V'_{m+1}\to[0,d_1]$ given by $\varphi^*\omega_H(v'_i)=d_1-\omega_H(h_i)$.  Then Claim~\ref{cl:combinatorial recursion}, and thus Theorem~\ref{th:combinatorial construction}, is an immediate consequence of the following.
 \begin{claim}\label{cl:horizontal to vertical}
   For any horizontal grading $\omega_H:H_m\to[0,d_1]$ we have the equality
   \begin{equation}\label{eq:horizontal to vertical}
     F_{P_0}\big(Y(\overline{\omega_H})\big)=Y'\big(\overline{\varphi^*\omega_H}\big).
   \end{equation}
 \end{claim}
-To establish this claim we will need to further decompose each $Y(\overline{\omega_H})$ by studying the natural partial order on $\overline{\omega_H}$ given by $\omega_{V,1}\le\omega_{V,2}$ if $\omega_{V,1}(v)\le\omega_{V,2}(v)$ for all $v\in V_m$.  There is an analogous prtial order on each $\overline{\omega_V}$.  The result will be deduced from a detailed understanding of the maximal elements of $\overline{\omega_H}$ under this partial order.  
 
-The maximal elements of $\overline{\omega_H}$ admit a ``revlex'' total ordering.  More precisely, for maximal elements $\omega_{V,1}$ and $\omega_{V,2}$ we write $\omega_{V,1}\prec\omega_{V,2}$ if there exists $v_i\in V$ such that $\omega_{V,1}(v_i)<\omega_{V,2}(v_i)$ but $\omega_{V,1}(v_j)=\omega_{V,2}(v_j)$ for $j>i$.  Write $\omega_V^{(t)}\prec\cdots\prec\omega_V^{(1)}$ for the maximal elements of $\overline{\omega_H}$ (where $t$ depends on $\omega_H$ but we suppress it from all notation).  Note that for $1\le r\le t$, we have $\omega_V^{(r)}(v)=0$ for $v\in\sh(\omega_H)\setminus\rsh(\omega_H)$ and $\omega_V^{(r)}(v)=d_2$ for $v\in V\setminus\sh(\omega_H)$.  
+\begin{lemma}
+  Conditions for factorization of $Y_{\bfa_m}(\overline{\omega_H})$ as
+  \[Y_{\bfa_m}(\overline{\omega_H})=\begin{cases}Y_{\bfa_{m-1}}\Big(\overline{\omega_H|_{I_1}}\Big)\cdots Y_{\bfa_{m-1}}\Big(\overline{\omega_H|_{I_{d_m-1}}}\Big)X^{u_{m-2,1}}Y_{\bfa_{m-1}}(\overline{\nu\sqcup\omega_H|_{I_{d_m}}}) & \text{if $m=3$ or $m\ge 4$ and $d_{m-1}\ne 1$;}\\ Y_{\bfa_{m-1}}\Big(\overline{\omega_H|_{I_1}}\Big)\cdots Y_{\bfa_{m-1}}\Big(\overline{\omega_H|_{I_{d_m-2}}}\Big)X^{u_{m-3,1}}Y_{\bfa_{m-1}}(\overline{\nu\sqcup\omega_H|_{I_{d_m-1}}}) & \text{if $m\ge 4$ and $d_{m-1}=1$;}\end{cases}\]
+  where:
+  \begin{itemize}
+    \item $I_j=[(j-1)u_{m-1,1}+1,ju_{m-1,1}]$ is identified with $H_{m-1}$ for 
+    \[j\in\begin{cases}[1,d_m-1] & \text{if $m=3$ or $m\ge 4$ and $d_{m-1}\ne 1$;}\\ [1,d_m-2] & \text{if $m\ge 4$ and $d_{m-1}=1$;}\end{cases}\]
+    and $\nu:\begin{cases}H_{m-2}\to[0,d_1] & \text{if $m=3$ or $m\ge 4$ and $d_{m-1}\ne 1$;}\\ H_{m-3}\to[0,d_1] & \text{if $m\ge 4$ and $d_{m-1}=1$;}\end{cases}$ is the horizontal grading which assigns the value $\ell$ to a horizontal edge which is immediately followed by exactly $\ell$ vertical edges;
+    \item $I_j=[u,u_{m,1}]$ with $(j,u)=\begin{cases}\big(d_m,(d_m-1)u_{m-1,1}+1\big) & \text{if $m=3$ or $m\ge 4$ and $d_{m-1}\ne 1$}\\\big(d_m-1,(d_m-2)u_{m-1,1}+1\big) & \text{if $m\ge 4$ and $d_{m-1}=1$}\end{cases}$.
+  \end{itemize}
+  this happens when
+  \begin{itemize}
+    \item $v_{u_{m-1,2}}\notin D_V(h_i;\omega_H)$ for any $i\in\begin{cases}[1,(d_m-1)u_{m-1,1}] & \text{if $m=3$ or $m\ge 4$ and $d_{m-1}\ne 1$;}\\ [1,(d_m-2)u_{m-1,1}] & \text{if $m\ge 4$ and $d_{m-1}=1$;}\end{cases}$
+    \item 
+  \end{itemize}
+\end{lemma}
+
+To establish this claim we will need to further decompose each $Y(\overline{\omega_H})$ by studying the natural partial order on $\overline{\omega_H}$ given by $\omega_{V,1}\le\omega_{V,2}$ if $\omega_{V,1}(v)\le\omega_{V,2}(v)$ for all $v\in V_m$.  There is an analogous partial order on each $\overline{\omega_V}$.  The result will be deduced from a detailed understanding of the maximal elements of $\overline{\omega_H}$ under this partial order.  
+
+The maximal elements of $\overline{\omega_H}$ admit a ``revlex'' total ordering.  More precisely, for maximal elements $\omega_{V,1}$ and $\omega_{V,2}$ we write $\omega_{V,1}\prec\omega_{V,2}$ if there exists $v_i\in V$ such that $\omega_{V,1}(v_i)<\omega_{V,2}(v_i)$ but $\omega_{V,1}(v_j)=\omega_{V,2}(v_j)$ for $j>i$.  Write $\omega_V^{(t)}\prec\cdots\prec\omega_V^{(1)}$ for the maximal elements of $\overline{\omega_H}$ (where $t$ depends on $\omega_H$ but we suppress it from all notation).  Note that for $1\le r\le t$, we have $\omega_V^{(r)}(v)=0$ for $v\in\sh(\omega_H)\setminus\rsh(\omega_H)$ and $\omega_V^{(r)}(v)=d_2$ for $v\in V\setminus\sh(\omega_H)$.
+\begin{remark}
+  The minimal element $\omega_V^{(t)}$ under $\prec$ is obtained by reading the vertical edges in the natural order along $D_m$ and sequentially assigning each edge the maximal possible grade in $[0,d_2]$ which maintains compatibility.  The maximal element $\omega_V^{(1)}$ is obtained by the same procedure where the vertical edges are read in reverse order.
+\end{remark}
 
 Inductively define a partition $\overline{\omega_H}=\overline{\omega_H}^{(1)}\sqcup\cdots\sqcup\overline{\omega_H}^{(t)}$ as follows:
 \begin{itemize}
@@ -261,17 +282,48 @@ Apart from their relationship to the compatibility conditions (HGC) and (VGC), t
   A horizontal edge $h\in(ee')_H$ contributes a factor of $p_{\omega_H(h)}Y^{\omega_H(h)}X^{-1}$ to $X_{\omega_H,\omega_V}(ee')$ while a vertical edge $v\in(ee')_V$ contributes a factor of $p'_{\omega_V(v)}X^{\omega_V(v)+1}Y^{-1}X^{-1}$.  The result now follows by comparing the total $Y$- and $X$-degrees of $X_{\omega_H,\omega_V}(ee')$ with the definitions of $f_{\omega_H}(ee')$ and $f_{\omega_V}(ee')$ respectively.
 \end{proof}
 
+These functions also provide a convenient language for understanding the partial orders on $\overline{\omega_H}$ and $\overline{\omega_V}$:
+\begin{itemize}
+  \item $\omega_V\le\omega'_V$ in $\overline{\omega_H}$ if $f_{\omega_V}(ee')\le f_{\omega'_V}(ee')$ for every subpath $ee'\subset D$;
+  \item $\omega_H\le \omega'_H$ in $\overline{\omega_V}$ if $f_{\omega_H}(ee')\le f_{\omega'_H}(ee')$ for every subpath $ee'\subset D$.
+\end{itemize}
+
 For a horizontal grading $\omega_H$, define the \emph{local shadow path} $D(h;\omega_H)$ of a horizontal edge $h\in H_m$ to be the shortest subpath $he$ of $D_m$ such that $f_{\omega_H}(he)=0$, if there is no such subpath we set $D(h;\omega_H)=hv_{a_2}$.  Write $D_H(h;\omega_H):=D(h;\omega_H)\cap H$ and $D_V(h;\omega_H):=D(h;\omega_H)\cap V$ for the \emph{local horizontal shadow} and \emph{local vertical shadow} of $h$ with repect to $\omega_H$.  The local shadow path $D(v;\omega_V)$ and local shadows $D_H(v;\omega_V)$, $D_V(v;\omega_V)$ are defined similarly.
 
 By definition we have $f_{\omega_H}\big(D(h;\omega_H)\big)=0$.  More importantly, writing $D(h;\omega_H)=he$, \cite[Lemma~4.8]{rupel2} shows that $f_{\omega_H}(he')>0$ and $f_{\omega_H}(e'e)<0$ for any proper subpaths $he',e'e\subset D(h;\omega_H)$.  Similarly, $f_{\omega_V}\big(D(v;\omega_V)\big)=0$, $f_{\omega_V}(e'v)>0$, and $f_{\omega_V}(ee')<0$ for proper subpaths $ee',e'v\subset D(v;\omega_V)=ev$.  Thus we see for $h\in\supp(\omega_H)$ and $v\in D(h;\omega_H)\cap V$ that the condition (HGC) is not satisfied, however for any $\omega_V\in\overline{\omega_H}$ the condition (VGC) is satisfied for $h$ and $v$.  In particular, $D(v;\omega_V)$ is a proper subpath of $D(h;\omega_H)$ for any $v\in D(h;\omega_H)\cap V$.
 
-By \cite[Lemma~4.10]{rupel2}, any two local shadow paths $D(h;\omega_H)$ and $D(h';\omega_H)$ are either disjoint or one is contained in the other.  Writing $D(h;\omega_H)=he$, \cite[Lemma~4.8]{rupel2} shows that the edge $e$ is vertical, in particular this provides a map $\sigma:\supp(\omega_H)\to V$.  Since both the domain and codomain of $\sigma$ are ordered sets, we may study the inversions of $\sigma$ and this provides a convenient language for describing the containment structure of the local shadow paths.
+By \cite[Lemma~4.10]{rupel2}, any two local shadow paths $D(h;\omega_H)$ and $D(h';\omega_H)$ are either disjoint or one is contained in the other.  Writing $D(h;\omega_H)=he$, \cite[Lemma~4.8]{rupel2} shows that the edge $e$ is vertical.  In particular, this provides a map $\sigma:\supp(\omega_H)\to V$, where the \emph{support} of a grading $\omega$ is $\supp(\omega):=\{e\in E:\omega(e)>0\}$ and we set $\supp(\omega_H)=\supp(\omega)\cap H$ and $\supp(\omega_V)=\supp(\omega)\cap V$.  Since both the domain and codomain of $\sigma$ are ordered sets, we may study the inversions of $\sigma$ and this provides a convenient language for describing the containment structure of the local shadow paths.
+\begin{lemma}\label{le:shadow path containment}
+  Suppose $1\le i<j\le u_{m,1}$.  If $\sigma(h_i)<\sigma(h_j)$, then $\sigma(h_i)<h_j$.  Moreover, if $\sigma(h_j)<\sigma(h_i)$, then $D(h_j;\omega_H)\subset D(h_i;\omega_H)$.
+\end{lemma}
 \begin{lemma}
- Suppose $1\le i<j\le a_1$ and $\sigma(h_j)\le\sigma(h_i)$, then $D(h_j;\omega_H)\subset D(h_i;\omega_H)$.
+  Suppose $h_i<h_j$ and $\sigma(h_j)<\sigma(h_i)$, so that $D(h_j;\omega_H)<D(h_i;\omega_H)$, and write $r<s$ for the deepest depths appearing in the shadows of $h_j$ and $h_i$ respectively.  Then $D(v'_r;\varphi^*\omega_H)\subset D(v'_s;\varphi^*\omega_H)$.
 \end{lemma}
 
+Write $D(\omega_H)=\bigcup\limits_{h\in H_m} D(h;\omega_H)$.  Call $D_H(\omega_H):=D(\omega_H)\cap H_m$ and $D_V(\omega_H):=D(\omega_H)\cap V_m$ the \emph{horizontal shadow} and \emph{vertical shadow} of $\omega_H$.  Define $D(\omega_V)$, $D_H(\omega_V)$, and $D_V(\omega_V)$ for a vertical grading $\omega_V$ similarly.  By Lemma~\ref{le:shadow path containment}, given a horizontal grading $\omega_V$ there exist indices $i_1,\ldots,i_r\in[1,u_{m,1}]$ so that 
+\begin{itemize}
+  \item $h_{i_1}<\cdots<h_{i_r}\in\supp(\omega_H)$,
+  \item $D(h_{i_k};\omega_H)\cap D(h_{i_\ell};\omega_H)=\emptyset$ for $k\ne\ell$,
+  \item $D(\omega_H)=\bigsqcup\limits_{k=1}^r D(h_{i_k};\omega_H)$.
+\end{itemize}
+A similar decomposition holds for a vertical grading $\omega_V$.  We refer to the $D(h_{i_k};\omega_H)$ as \emph{maximal shadow paths}.
+\begin{lemma}
+  Suppose $D(h_{i_k};\omega_H)$ is maximal and write $\sigma(h_{i_k})=v_j$.  Then $D(v'_{\lceil ju_{m,1}/u_{m-1,2}\rceil};\varphi^*\omega_H)=h'_{i-1}v'_{\lceil ju_{m,1}/u_{m-1,2}\rceil}$ is maximal.
+\end{lemma}
 
+\begin{proposition}
+  Suppose $D(h_{i_k};\omega_H)$ is maximal and write $\sigma(h_{i_k})=v_j$.  Then 
+  \[F_{P_0}\big(X_{D(h_{i_k};\omega_H)\big)}(\overline{\omega_H})=X'_{D(v'_{\lceil ju_{m,1}/u_{m-1,2}\rceil};\varphi^*\omega_H)}\big(\overline{\varphi^*\omega_H}\big).\]
+\end{proposition}
 
+\begin{lemma}\mbox{}
+  \begin{itemize}
+    \item Suppose $h_i\in H_m\setminus D_H(\omega_H)$ with $\lfloor (i-1)u_{m-1,2}/u_{m,1}\rfloor=\lfloor iu_{m-1,2}/u_{m,1}\rfloor$.  Then for any $1\le r\le t$ we have
+    \[F_{P_0}(X_{h_i}(\overline{\omega_H}^{(r)})=X_{h'_{\lceil(i-1)u_{m+1,2}/u_{m,1}\rceil+1}v'_i}\big(\overline{\varphi^*\omega_H}^{(r)}\big).\] 
+    \item Suppose $h_i\in H_m\setminus D_H(\omega_H)$ with $\lfloor (i-1)u_{m-1,2}/u_{m,1}\rfloor\ne\lfloor iu_{m-1,2}/u_{m,1}\rfloor$.  Then for any $1\le r\le t$ we have
+    \[F_{P_0}(X_{h_iv}(\overline{\omega_H}^{(r)})=X_{h'_{\lceil(i-1)u_{m+1,2}/u_{m,1}\rceil+1}v'_i}\big(\overline{\varphi^*\omega_H}^{(r)}\big).\]
+  \end{itemize}
+\end{lemma}
 
 
 \begin{lemma}
@@ -283,7 +335,7 @@ By \cite[Lemma~4.10]{rupel2}, any two local shadow paths $D(h;\omega_H)$ and $D(
 \end{proof}
 
 
-Define the \emph{support} of a grading $\omega$ as $\supp(\omega):=\{e\in E:\omega(e)>0\}$.  Similarly, we set $\supp(\omega_H)=\supp(\omega)\cap H$ and $\supp(\omega_V)=\supp(\omega)\cap V$. 
+ 
 
 Following \cite[Lemma 4.4]{rupel2}, there exists subsets $\rsh(\omega_H)\subset\sh(\omega_H)\subset V$, called respectively the \emph{remote shadow} and \emph{shadow} of $\omega_H$, such that $\omega_V\in\overline{\omega_H}$ if and only if $\omega_V(v)=0$ for $v\in\sh(\omega_H)\setminus\rsh(\omega_H)$ and one of the compatibility conditions is satisfied for every $h\in\supp(\omega_H)$ and $v\in\rsh(\omega_H)$.  We note in particular that (HGC) is satisfied for any $h\in\supp(\omega_H)$ and $v\in V\setminus\sh(\omega_H)$.  Analogous statements are also valid for a vertical grading $\omega_V$.
 
@@ -439,79 +491,24 @@ Define a partial order on $\overline{\omega_{V'}}$ similarly with a ``lex'' tota
 \end{proof}
 
 
-\section{Introduction and Main Results}
-
- Let $\kk$ be any field of characteristic zero.  Define $\FF=\kk(X,Y)$ to be the skew-field of formal rational expressions in non-commuting variables $X$ and $Y$.  For any polynomial $P\in\kk[z]$ we define a $\kk$-linear homomorphism $K_P:\FF\to\FF$ by the rule $X\mapsto XYX^{-1}$ and $Y\mapsto P(Y)X^{-1}$.  Note that the inverse of $K_P^{-1}$ is given by the rule $X\mapsto P(X)Y^{-1}$ and $Y\mapsto YXY^{-1}$.  These maps turn out to be rather well-behaved automorphisms of $\FF$ and, in particular, admit a very interesting dynamics.
- 
-
- For a polynomial $P$ define the \emph{conjugate polynomial} by $\bar{P}(z)=z^dP(z^{-1})$ where $d$ is the degree of $P$.  For notational convenience we define $K_{P_1,P_2}^n:\FF\to\FF$ as follows:
- \begin{equation}
-  K_{P_1,P_2}^n=\begin{cases}\big(K_{\bar{P}_1}K_{\bar{P}_2}K_{P_1}K_{P_2}\big)^{n/4} & \text{if $n\equiv 0 \mod 4$;}\\ K_{\bar{P}_1}\big(K_{\bar{P}_2}K_{P_1}K_{P_2}K_{\bar{P}_1}\big)^{(n-1)/4} & \text{if $n\equiv 1 \mod 4$;}\\ K_{\bar{P}_1}K_{\bar{P}_2}\big(K_{P_1}K_{P_2}K_{\bar{P}_1}K_{\bar{P}_2}\big)^{(n-2)/4} & \text{if $n\equiv 2 \mod 4$;}\\ K_{\bar{P}_1}K_{\bar{P}_2}K_{P_1}\big(K_{P_2}K_{\bar{P}_1}K_{\bar{P}_2}K_{P_1}\big)^{(n-3)/4} & \text{if $n\equiv 3 \mod 4$.}\end{cases}
- \end{equation}
- The goal of this paper is to establish the following Laurentness and positivity result.
- \begin{theorem}\label{th:poly_positivity}\mbox{}
-  \begin{enumeratea}
-   \item Fix $n\ge0$.  For any monic polynomials $P_1,P_2\in\kk[z]$ with $P_1(0)=P_2(0)=1$, the elements \[X_n:=K_{P_1,P_2}^n(X)\quad\text{and}\quad Y_n:=K_{P_1,P_2}^n(Y)\]
-   are given by Laurent polynomials in $X$ and $Y$.
-   \item If moreover $P_1,P_2\in\ZZ_{\ge0}[z]$, then $X_n$ and $Y_n$ have positive integer coefficients.
-  \end{enumeratea}
- \end{theorem}
- \begin{remark}
-  Notice that we have $XYX^{-1}=XYX^{-1}Y^{-1}Y$ and so Lemma~\ref{lem:simple_obs}$(b)$ below shows that the claim for $Y_n$ follows from that for $X_{n+1}$.
- \end{remark}
- \begin{remark}\label{rm:quadratic}
-  When $P_1,P_2\in \ZZ_{\ge0}[z]$ are monic and quadratic (but not necessarily palindromic) with the same constant terms the above theorem still appears to hold, although our proof does not cover these cases.  We also conjecture that part (a) still holds when $P_1$ and $P_2$ are skew-palindromic, i.e. $P(z)=-z^rP(z^{-1})$.
- \end{remark}
-
- Theorem~\ref{th:poly_positivity} establishes and generalizes a conjecture by M. Kontsevich which by now has a growing history.  When $P_1=P_2$ the Laurentness part of Theorem~\ref{th:poly_positivity} was shown by Usnich. 
- \begin{theorem}\cite{u}\label{th:laurent}
+\erase{
+Theorem~\ref{th:poly_positivity} establishes and generalizes a conjecture by M. Kontsevich which by now has a growing history.  When $P_1=P_2$ the Laurentness part of Theorem~\ref{th:poly_positivity} was shown by Usnich. 
+\begin{theorem}\cite{u}\label{th:laurent}
   Suppose $P$ is monic and $\bar{P}=P$.  Then $K_P^n(X)$ and $K_P^n(Y)$ are Laurent polynomials in $X$ and $Y$.
- \end{theorem}
- \begin{remark}
+\end{theorem}
+\begin{remark}
   For the most part (see Remark~\ref{rm:quadratic}) the assumptions of Theorem~\ref{th:poly_positivity} and Theorem~\ref{th:laurent} cannot be weakened.  We invite the reader to compute $K_P^4(X)$ when $P$ fails one or more of these conditions.  This is the first time where Laurentness could fail and the reader will see exactly why these assumptions are necessary. 
- \end{remark}
- The proof of Theorem~\ref{th:laurent} uses derived categories of coherent sheaves on surfaces.  In a special (and at the same time more general) case this result was proven by Berenstein and Retakh using elementary methods.  Let $r_1,r_2\in\ZZ_{>0}$ be positive integers and abbreviate $K_{r_1}:=K_{1+z^{r_1}}$ and $K_{r_2}:=K_{1+z^{r_2}}$.
- \begin{theorem}\cite{br}\label{th:easy_laurent}
+\end{remark}
+The proof of Theorem~\ref{th:laurent} uses derived categories of coherent sheaves on surfaces.  In a special (and at the same time more general) case this result was proven by Berenstein and Retakh using elementary methods.  Let $r_1,r_2\in\ZZ_{>0}$ be positive integers and abbreviate $K_{r_1}:=K_{1+z^{r_1}}$ and $K_{r_2}:=K_{1+z^{r_2}}$.
+\begin{theorem}\cite{br}\label{th:easy_laurent}
   For any $n\ge0$, $\underbrace{K_{r_1}K_{r_2}K_{r_1}\cdots}_n(X)$ and $\underbrace{K_{r_1}K_{r_2}K_{r_1}\cdots}_n(Y)$ are given by Laurent polynomials in $X$ and $Y$.
- \end{theorem}
+\end{theorem}
 
- The positivity of the elements from Theorem~\ref{th:easy_laurent} was conjectured by M. Kontsevich and proven in various cases by many authors.  Di Francesco-Kedem \cite{dk} proved positivity for $r_1r_2=4$, Lee-Schiffler \cite{ls} proved it for $r_1=r_2$, and the author \cite{r} proved positivity for all pairs $r_1$ and $r_2$.  The latter two are proven by assigning non-commutative weights to admissible collections of subpaths in a maximal Dyck path.  
+The positivity of the elements from Theorem~\ref{th:easy_laurent} was conjectured by M. Kontsevich and proven in various cases by many authors.  Di Francesco-Kedem \cite{dk} proved positivity for $r_1r_2=4$, Lee-Schiffler \cite{ls} proved it for $r_1=r_2$, and the author \cite{r} proved positivity for all pairs $r_1$ and $r_2$.  The latter two are proven by assigning non-commutative weights to admissible collections of subpaths in a maximal Dyck path.  
 
- For our purposes it is more convenient to adapt the theory of compatible pairs in a maximal Dyck path developed extensively in \cite{llz}, rather than using the theory of admissible collections of subpaths from \cite{ls} and \cite{r}.  Our argument is independent of those from \cite{ls} and \cite{r} and thus provides an alternative proof of the Kontsevich non-commutative cluster positivity conjecture.  We will again consider non-commutative weights, this time assigned to certain ``graded'' compatible pairs.  This combinatorial model has the advantage over admissible collections that it may be easily adapted to arbitrary rectangles.  Analogous to the results of \cite{llz}, in a companion work \cite{r2}, we define a ``greedy basis'' of the commutative rank 2 generalized cluster algebras using this more general notion of compatible pairs.  
+For our purposes it is more convenient to adapt the theory of compatible pairs in a maximal Dyck path developed extensively in \cite{llz}, rather than using the theory of admissible collections of subpaths from \cite{ls} and \cite{r}.  Our argument is independent of those from \cite{ls} and \cite{r} and thus provides an alternative proof of the Kontsevich non-commutative cluster positivity conjecture.  We will again consider non-commutative weights, this time assigned to certain ``graded'' compatible pairs.  This combinatorial model has the advantage over admissible collections that it may be easily adapted to arbitrary rectangles.  Analogous to the results of \cite{llz}, in a companion work \cite{r2}, we define a ``greedy basis'' of the commutative rank 2 generalized cluster algebras using this more general notion of compatible pairs.}
 
- To introduce non-commutative weights on graded compatible pairs we need to introduce more notation.  For a polynomial $P\in\kk[z]$ write $\supp(P)$ for the set of all $r$ such that $z^r$ appears in $P$ with non-zero coefficient.  Let $r_1$ be the degree of the polynomial $P_1:=p_0+p_1z+p_2z^2+\cdots+p_{r_1}z^{r_1}$ and $r_2$ the degree of $P_2:=p'_0+p'_1z+p'_2z^2+\cdots+p'_{r_2}z^{r_2}$.  Note that we assume $P_1$ and $P_2$ are monic and palindromic, in particular: $p_{r_1}=p'_{r_2}=1$, $p_s=p_{r_1-s}$, and $p'_s=p'_{r_2-s}$ for all $s$.  
 
- For $a_1,a_2\in\ZZ_{\ge0}$ and a compatible pair $(\omega_H,\omega_V)\in\cC_{a_1,a_2}$ we assign a non-commutative weight $\wt_{\omega_H,\omega_V}(e)$ to each edge $e$ of a maximal Dyck path $D_{a_1,a_2}$ (see Sections~\ref{sec:Dyck} and \ref{sec:compatible pairs} for definitions) as follows:
- \begin{equation}\label{eq:edge weights}
-  \wt_{\omega_H,\omega_V}(e)=\begin{cases}
-                    p_{\omega_H(e)}Y^{\omega_H(e)}X^{-1} & \text{ if $e\in H$;}\\
-                    p'_{\omega_V(e)}X^{\omega_V(e)+1}Y^{-1}X^{-1} & \text{ if $e\in V$.}\\
-                   \end{cases}
- \end{equation}
- We will take the following product of weights in the natural order along the Dyck path $D_{a_1,a_2}$:
- \[X_{\omega_H,\omega_V}:=\prod\limits_{i=1}^{a_1+a_2}\wt_{\omega_H,\omega_V}(e_i)=\wt_{\omega_H,\omega_V}(e_1)\cdots\wt_{\omega_H,\omega_V}(e_{a_1+a_2}).\]
- \begin{definition}
-  For $a_1,a_2\in\ZZ_{\ge0}$ define $X[a_1,a_2]=XYX^{-1}Y^{-1}\sum\limits_{(\omega_H,\omega_V)\in\cC_{a_1,a_2}} X_{\omega_H,\omega_V}$.
- \end{definition}
-
- In order to state our main result we introduce two-parameter Chebyshev polynomials $U_{k,j}$, $k,j\in \ZZ$, defined recursively by: 
- \[\tag{$*$}U_{-1,j}=0, \quad U_{0,j}=1,\quad U_{k+1,j+1}=r_jU_{k,j}-U_{k-1,j-1} \text{ where $r_j=\begin{cases} r_1, & \text{ if $j$ is odd;}\\ r_2, & \text{ if $j$ is even.}\end{cases}$}\]
- \begin{remark}
-  The two-parameter Chebyshev polynomials can be seen as the components of positive roots in the rank two root system associated to the Cartan matrix $\left(\begin{array}{cc}2 & -r_1\\ -r_2 & 2\end{array}\right)$, though we will not make use of this fact.
- \end{remark}
- Theorem~\ref{th:poly_positivity} is an immediate consequence of the following description of $X_{n-1}$.
- \begin{theorem}\label{th:cl_var}
-  For $n\ge3$ we have $X_{n-1}=X[U_{n-3,1},U_{n-4,2}]$.
- \end{theorem}
- 
- \subsection{Conventions}
-  We adopt the following notational convention throughout the paper: a numbered equation may be referenced anywhere within the paper, e.g. \eqref{}, \eqref{}, etc., while an equation labeled by a symbol, e.g. \eqref{}, \eqref{}, etc., will only be referenced locally.
- 
-\section*{Acknowledgements}
-
-The author would like to thank Thomas McConville for valuable conversations related to this work.  These took place during the Joint Introductory Workshop of the Cluster Algebras/Commutative Algebra programs at the Mathematical Sciences Research Institute.  
-
-Most of the ideas for the proofs in this note were worked out during the author's time as a Postdoctoral Research Fellow of the Cluster Algebras program at the MSRI.  The author would like to thank the organizers of the program for the opportunity to work in such a beautiful and productive environment, and the staff of the Mathematical Sciences Research Institute for their hospitality and support. 
 
 \section{Examples}
  \begin{example}
@@ -728,153 +725,7 @@ Most of the ideas for the proofs in this note were worked out during the author'
 \end{example}
  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Combinatorics of Graded Compatible Pairs: Shadows}\label{sec:compatible pairs}
 
- Here we introduce our main combinatorial object of study, namely graded compatible pairs.  We will begin with general results that do not require an upper bound on the gradings and restrict to the bounded case when it becomes necessary.  Let $D=D_{a_1,a_2}$ be any maximal Dyck path with horizontal edges $H$ and vertical edges $V$.  
-
-\subsection{Unbounded Gradings}
- \begin{definition}
-  Consider functions $\omega_H:H\to\ZZ_{\ge0}$ and $\omega_V:V\to\ZZ_{\ge0}$ which we call \emph{horizontal} (resp. \emph{vertical}) \emph{gradings}.  We call the pair $(\omega_H,\omega_V)$ \emph{(graded) compatible} if for every $h\in H$ and $v\in V$ there exists an edge $e\in hv$ so that at least one of the following conditions on the gradings is satisfied:
-  \begin{align}
-   \label{eq:compatibility1}\tag{HGC} &\text{$e\ne v$}\quad\text{ and } \quad|(he)_V|=\sum\limits_{h'\in(he)_H}\omega_H(h');\\
-   \label{eq:compatibility2}\tag{VGC} &\text{$e\ne h$}\quad\text{ and } \quad|(ev)_H|=\sum\limits_{v'\in(ev)_V}\omega_V(v').
-  \end{align}
-  Write $\cC=\cC_{a_1,a_2}$ for the set of all such compatible pairs $(\omega_H,\omega_V)$.
- \end{definition}
- \begin{remark}\label{rem:trivial_compatibility}
-  For $h\in H$ with $\omega_H(h)=0$ the horizontal grading condition~\eqref{eq:compatibility1} of Definition~\ref{def:compatibility} is trivially satisfied for all $v\in V$ by taking $e=h$.  Similarly for $v\in V$ with $\omega_V(v)=0$ the vertical grading condition~\eqref{eq:compatibility2} is trivially satisfied.
- \end{remark}
-
- In order to prove Theorem~\ref{th:poly_positivity} we will need to develop some of the combinatorics of compatible pairs, many of the results from this section are generalizations of, or are inspired by, similar results from \cite[Section 3]{llz}.  
-
- For a horizontal grading $\omega_H:H\to\ZZ_{\ge0}$, write $\overline{\omega_H}$ for the set of all vertical gradings $\omega_V:V\to\ZZ_{\ge0}$ with $(\omega_H,\omega_V)\in\cC$.  Define $\overline{\omega_V}$ similarly.  We define the \emph{magnitude} of a horizontal grading $\omega_H$ or a vertical grading $\omega_V$ respectively by $|\omega_H|=\sum\limits_{h\in H}\omega_H(h)$ and $|\omega_V|=\sum\limits_{v\in V} \omega_V(v)$.  The following result greatly simplifies the check for membership in $\overline{\omega_H}$ and $\overline{\omega_V}$.
- \begin{lemma}\label{le:shadows}\mbox{}
-  \begin{enumeratea}
-   \item For every $\omega_H:H\to\ZZ_{\ge0}$ there exist subsets $\rsh(\omega_H)\subset\sh(\omega_H)\subset V$ such that:
-   \begin{enumeratei}
-    \item for $\omega_V:V\to\ZZ_{\ge0}$, $\omega_V\in\overline{\omega_H}$ if and only if $\omega_V(v)=0$ for all $v\in\sh(\omega_H)\setminus\rsh(\omega_H)$ and one of the conditions \eqref{eq:compatibility1} or \eqref{eq:compatibility2} is satisfied for each $h\in\supp(\omega_H)$ and $v\in\rsh(\omega_H)$;
-    \item $|\sh(\omega_H)|=\min(a_2,|\omega_H|)$.
-   \end{enumeratei}
-   \item For every $\omega_V:V\to\ZZ_{\ge0}$ there exist subsets $\rsh(\omega_V)\subset\sh(\omega_V)\subset H$ such that
-   \begin{enumeratei}
-    \item for $\omega_H:H\to\ZZ_{\ge0}$, $\omega_H\in\overline{\omega_V}$ if and only if $\omega_H(h)=0$ for all $h\in\sh(\omega_V)\setminus\rsh(\omega_V)$ and one of the conditions \eqref{eq:compatibility1} or \eqref{eq:compatibility2} is satisfied for each $h\in\rsh(\omega_V)$ and $v\in\supp(\omega_V)$;
-    \item $|\sh(\omega_V)|=\min(a_1,|\omega_V|)$.
-   \end{enumeratei}
-  \end{enumeratea}
- \end{lemma}
-
- We will refer to the sets $\sh(\omega_H)$ and $\rsh(\omega_H)$ respectively as the \emph{shadow} and \emph{remote shadow} of $\omega_H$ (and similarly for $\omega_V$).  Before proving Lemma~\ref{le:shadows} we require some preparation.  The shadow of each $\omega_H$ will be defined in terms of certain ``local shadows''.
- \begin{definition}\label{def:local}\mbox{}
-  \begin{enumeratea}
-   \item For each $h\in H$, define $\sh(h;\omega_H)$, the \emph{local shadow of $\omega_H$ at $h$}, as the set of vertical edges $(he)_V$ in the shortest subpath $he$ of $D$ such that $|(he)_V|=\sum\limits_{h'\in(he)_H}\omega_H(h')$.  Write $D(h;\omega_H)=he$ for this minimal path.  If there is no such subpath then we set $\sh(h;\omega_H)=V$ and $D(h;\omega_H)=D$.  We define the \emph{shadow} of $\omega_H$ as the union of local shadows: $\sh(\omega_H)=\bigcup\limits_{h\in H}\sh(h;\omega_H)$.
-   \item For each $v\in V$, define $\sh(v;\omega_V)$, the \emph{local shadow of $\omega_V$ at $v$}, as the set of horizontal edges $(ev)_H$ in the shortest subpath $ev$ of $D$ such that $|(ev)_H|=\sum\limits_{v'\in(ev)_V}\omega_V(v')$.  Write $D(v;\omega_V)$ for this minimal path $ev$.  If there is no such subpath then we set $\sh(v;\omega_V)=H$ and $D(v;\omega_V)=D$.  We define the \emph{shadow} of $\omega_V$ as the union of local shadows: $\sh(\omega_V)=\bigcup\limits_{v\in V}\sh(v;\omega_V)$.
-  \end{enumeratea}
- \end{definition}
- \begin{remark}
-  When $\omega_H(h)=0$, we have $\sh(h;\omega_H)=\emptyset$ and $D(h;\omega_H)=hh$ is the subpath of $D$ consisting of only the edge $h$.  A similar claim holds if $\omega_V(v)=0$.
- \end{remark}
-
- It will be useful to consider certain \emph{shadow statistics} for subpaths of $D$ which are closely related to the compatibility conditions for a pair $(\omega_H,\omega_V)\in\cC$.  
- \begin{definition}\label{def:shadow statistics}
-  For a subpath $ee'\subset D$ define the \emph{horizontal shadow statistic}
-  \[f_{\omega_H}(ee'):=-|(ee')_V|+\sum\limits_{h\in(ee')_H}\omega_H(h)\]
-  for each horizontal grading $\omega_H$ and the \emph{vertical shadow statistic}
-  \[f_{\omega_V}(ee'):=-|(ee')_H|+\sum\limits_{v\in(ee')_V}\omega_V(v)\]
-  for each vertical grading $\omega_V$.  
- \end{definition}
- It immediately follows from the definitions that the functions $f_{\omega_H}$ and $f_{\omega_V}$ satisfy the following additivity property with respect to concatenation of paths:
- \begin{align*}
-  f_{\omega_H}(ee''')&=f_{\omega_H}(ee')+f_{\omega_H}(e''e'''),\\
-  f_{\omega_V}(ee''')&=f_{\omega_V}(ee')+f_{\omega_V}(e''e'''),
- \end{align*}
- whenever $ee'''=ee'\amalg e''e'''$.  For each subpath $ee'\subset D$ we obtain a factor $X_{\omega_H,\omega_V}(ee')$ of the monomial $X_{\omega_H,\omega_V}$ by multiplying the weights of edges along the path $ee'$.
- \begin{lemma}
-  The quantities $f_{\omega_H}(ee')$ and $f_{\omega_V}(ee')$ record the total $Y$-degree and the total $X$-degree respectively of the monomial $X_{\omega_H,\omega_V}(ee')$.
- \end{lemma}
- \begin{proof}
-  A horizontal edge $h\in(ee')_H$ contributes a factor of $p_{\omega_H(h)}Y^{\omega_H(h)}X^{-1}$ to $X_{\omega_H,\omega_V}(ee')$ while a vertical edge $v\in(ee')_V$ contributes a factor of $p'_{\omega_V(v)}X^{\omega_V(v)+1}Y^{-1}X^{-1}$.  The result now follows by comparing the total $Y$- and $X$-degrees of $X_{\omega_H,\omega_V}(ee')$ with the definitions of $f_{\omega_H}(ee')$ and $f_{\omega_V}(ee')$ respectively.
- \end{proof}
- The next lemma relates the minimal shadow paths $D(h;\omega_H)$ and $D(v;\omega_V)$ to the shadow statistics.
- \begin{lemma}\label{le:sub_compatibility}\mbox{}
-  \begin{enumeratea}
-   \item Suppose $h\in\supp(\omega_H)$ and write $D(h;\omega_H)=he$.
-   \begin{enumeratei}
-    \item $f_{\omega_H}(D(h;\omega_H))=0$.
-    \item For any proper subpath $he'\subset D(h;\omega_H)$ we have $f_{\omega_H}(he')>0$.
-    \item For any proper subpath $e'e\subset D(h;\omega_H)$ we have $f_{\omega_H}(e'e)<0$.
-   \end{enumeratei}
-   In particular, one may conclude that the last edge $e$ of $D(h;\omega_H)$ is vertical.
-   \item Suppose $v\in\supp(\omega_V)$ and write $D(v;\omega_V)=ev$.
-   \begin{enumeratei}
-    \item $f_{\omega_V}(D(v;\omega_V))=0$.
-    \item For any proper subpath $e'v\subset D(v;\omega_V)$ we have $f_{\omega_V}(e'v)>0$.
-    \item For any proper subpath $ee'\subset D(v;\omega_V)$ we have $f_{\omega_V}(ee')<0$.
-   \end{enumeratei}
-   In particular, one may conclude that the first edge $e$ of $D(v;\omega_V)$ is horizontal.
-  \end{enumeratea}
- \end{lemma}
- 
- The next easy result is an immediate consequence of Lemma~\ref{le:sub_compatibility} but exhibits a strong influence on the results below.
- \begin{corollary}\label{cor:remote_shadow_compatibility}
-  Suppose $h\in\supp(\omega_H)$ and let $v\in D(h;\omega_H)$ be any vertical edge.  Then (HC) is not satisfied for $h$ and $v$, however for any $\omega_V\in\overline{\omega_H}$ the condition (VC) is satisfied for $h$ and $v$.  In particular, $D(v;\omega_V)$ is a proper subpath of $hv$.
- \end{corollary}
-
- We can now understand the relationships between the various local shadows associated to a horizontal grading $\omega_H$ or a vertical grading $\omega_V$.
- \begin{lemma}\label{le:shadow containment}\mbox{}
-  \begin{enumeratea}
-   \item Let $\omega_H$ be a horizontal grading.  For any horizontal edges $h,h'\in H$, the local shadows $\sh(h;\omega_H)$ and $\sh(h';\omega_H)$ are either disjoint or one is contained in the other.
-   \item Let $\omega_V$ be a vertical grading.  For any vertical edges $v,v'\in V$, the local shadows $\sh(v;\omega_V)$ and $\sh(v';\omega_V)$ are either disjoint or one is contained in the other.
-  \end{enumeratea}
- \end{lemma}
- 
- It follows from Lemma~\ref{le:shadow containment} that for any fixed horizontal grading $\omega_H$ we can find horizontal edges $\eta_1,\ldots,\eta_p\in H$ (labeled in the natural order along the Dyck path $D$) such that
- \begin{itemize}
-  \item $\omega_H(\eta_j)>0$ for $1\le j\le p$;
-  \item $\sh(\eta_i;\omega_H)\cap\sh(\eta_j;\omega_H)=\emptyset$ for $i\ne j$;
-  \item $\sh(\omega_H)=\sh(\eta_1;\omega_H)\amalg\cdots\amalg\sh(\eta_p;\omega_H)$ is a partition of $\sh(\omega_H)$.
- \end{itemize}
- Define vertical edges $\nu_1,\ldots,\nu_p$ by $D(\eta_j;\omega_H)=\eta_j\nu_j$.
-   
- Our ultimate proof of Theorem~\ref{th:poly_positivity} will be achieved by restricting attention to these maximal local shadows.
-
- \begin{definition}\mbox{}
-  \begin{enumeratea}
-   \item The \emph{remote shadow} of $\omega_H$ is the set $\rsh(\omega_H)$ obtained from $\sh(\omega_H)$ by removing for each $d\in[1,a_1]$ the (up to) $\omega_H(h_d)$ vertical edges of depth $d$ immediately following $h_d$.  By considering the definition of compatibility one may alternatively described $\rsh(\omega_H)\subset\sh(\omega_H)$ as the subset consisting of all vertical edges $v$ for which there exists a vertical grading $\omega_V\in\overline{\omega_H}$ with $\omega_V(v)\ne0$.
-   \item The \emph{remote shadow} of $\omega_V$ is the set $\rsh(\omega_V)$ obtained from $\sh(\omega_V)$ by removing for each $\ell\in[1,a_2]$ the (up to) $\omega_V(v_\ell)$ horizontal edges of height $\ell-1$ immediately preceding $v_\ell$.  By considering the definition of compatibility one may alternatively describe $\rsh(\omega_V)\subset\sh(\omega_V)$ as the subset consisting of all horizontal edges $h$ for which there exists a horizontal grading $\omega_H\in\overline{\omega_V}$ with $\omega_H(h)\ne0$.
-  \end{enumeratea}
- \end{definition}
- 
- It will be useful to partition the remote shadows according to which local shadow contains a given edge. 
- \begin{definition}\label{def:remote_shadows}\mbox{}
-  \begin{enumeratea}
-   \item For $0<j\le a_1$ and $0<d\le a_1$, denote by $\rsh(\omega_H)_{j;d}$ the set of $v\in\rsh(\omega_H)$ of depth $d$ such that $v\in\sh(h_j;\omega_H)$ and $h_j$ is the first edge before $v$ with this property (i.e. the path $h_jv$ is shortest possible).  Define the \emph{local remote shadow} of the edge $h_j$ as $\rsh(h_j;\omega_H)=\coprod\limits_{d\in[1,a_1]}\rsh(\omega_H)_{j;d}$.
-   \item For $0<k\le a_2$ and $0\le \ell<a_2$, denote by $\rsh(\omega_V)_{k;\ell}$ the set of $h\in\rsh(\omega_V)$ of height $\ell$ such that $h\in\sh(v_k;\omega_V)$ and $v_k$ is the first edge after $h$ with this property (i.e. the path $hv_k$ is shortest possible).  Define the \emph{local remote shadow} of the edge $v_k$ as $\rsh(v_k;\omega_V)=\coprod\limits_{\ell\in[0,a_2-1]}\rsh(\omega_V)_{k;\ell}$.
-  \end{enumeratea}
- \end{definition}
- \begin{remark}\label{rem:remote_shadow_decomposition}
-  For a horizontal grading $\omega_H$ there are only finitely many $j$ with $\rsh(h_j;\omega_H)\ne\emptyset$.  Thus there exists a sequence $1\le j_1<\cdots<j_n\le a_1$ such that $\rsh(h_{j_t};\omega_H)\ne\emptyset$ for each $t\in[1,n]$ and there is a partition $\rsh(\omega_H)=\rsh(h_{j_1};\omega_H)\amalg\cdots\amalg\rsh(h_{j_n};\omega_H)$.
- \end{remark}
-
- The next lemma gives precise conditions describing when the remote shadows $\rsh(\omega_H)_{j;d}$ and $\rsh(\omega_V)_{j;\ell}$ are non-empty.  First note that $\rsh(\omega_H)_{d;d}=\emptyset$ for every $d$ and $\rsh(\omega_V)_{\ell+1;\ell}=\emptyset$ for every $\ell$.
- \begin{lemma}\label{le:remote_shadow_conditions}\mbox{}
-  \begin{enumeratea}
-   \item Let $0<d,j\le a_1$ with $j\ne d$.  Then $\rsh(\omega_H)_{j;d}\ne\emptyset$ if and only if $f_{\omega_H}(h_j\overline{h})>0>f_{\omega_H}(h\overline{h}_{d+1})$ for every horizontal edge $h\in (\overline{h}_j\overline{h}_{d+1})_H$.
-   \item Let $0\le\ell< a_2$ and $0<j\le a_2$ with $j\ne\ell+1$.  Then $\rsh(\omega_V)_{j;\ell}\ne\emptyset$ if and only if $f_{\omega_V}(\overline{v}_\ell v)<0<f_{\omega_V}(\overline{v}v_j)$ for every vertical edge $v\in (\overline{v}_\ell\overline{v}_j)_V$.
-  \end{enumeratea}
- \end{lemma}
- \begin{remark}
-  The inequalities above imply that when $\rsh(\omega_H)_{j;d}\ne\emptyset$ the set $\rsh(\omega_H)_{j';d'}$ will be empty whenever $j<j'<d<d'$.
- \end{remark}
-
-
- Now we are able to give an explicit formula for the sizes of the remote shadows.
- \begin{lemma}\label{le:remote_shadow_sizes}\mbox{}
-  \begin{enumeratea}
-   \item Let $0<d,j\le a_1$ with $d\ne j$ and suppose $f_{\omega_H}(h_j\overline{h})>0>f_{\omega_H}(h\overline{h}_{d+1})$ for every horizontal edge $h\in (\overline{h}_j\overline{h}_{d+1})_1$.  Then $|\rsh(\omega_H)_{j;d}|=\min\limits_{h\in (\overline{h}_j\overline{h}_{d+1})_1}\min\big(f_{\omega_H}(h_j\overline{h}),-f_{\omega_H}(h\overline{h}_{d+1})\big)$.
-   \item Let $0\le\ell< a_2$ and $0<j\le a_2$ with $\ell\ne j$ and suppose $f_{\omega_V}(\overline{v}_\ell v)<0<f_{\omega_V}(\overline{v}v_j)$ for every vertical edge $v\in (\overline{v}_\ell\overline{v}_j)_2$.  Then $|\rsh(\omega_V)_{j;\ell}|=\min\limits_{v\in (\overline{v}_\ell\overline{v}_j)_2}\min\big(-f_{\omega_V}(\overline{v}_\ell v),f_{\omega_V}(\overline{v}v_j)\big)$.
-  \end{enumeratea}
- \end{lemma}
 
  The constructions and results below do not come from \cite{llz}.  We will need to introduce partial orders on the sets $\overline{\omega_H}$ and $\overline{\omega_V}$.
  \begin{definition}\label{def:partial_order}\mbox{}
@@ -894,9 +745,6 @@ Most of the ideas for the proofs in this note were worked out during the author'
  \begin{definition}
   Define a ``revlex'' total order on $\Max(\overline{\omega_H})$ by $\omega_V\prec\omega'_V$ if there exists $j\in[0,a_2-1]$ such that $\omega_V(v_{a_2-i+1})=\omega'_V(v_{a_2-i+1})$ for $i\in[1,j]$ but $\omega_V(v_{a_2-j})<\omega'_V(v_{a_2-j})$, equivalently $\omega_V\prec\omega'_V$ if there exists $j\in[1,a_2]$ such that $f_{\omega_V}(ev_{a_2})=f_{\omega'_V}(ev_{a_2})$ for every $e\in\overline{v}_jv_{a_2}$ but $f_{\omega_V}(v_jv_{a_2})<f_{\omega'_V}(v_jv_{a_2})$.  Write $\omega_V^{(1)}\succ \omega_V^{(2)}\succ\cdots\succ \omega_V^{(n)}$ for the elements of $\Max(\overline{\omega_H})$.
  \end{definition}
- \begin{remark}
-  The minimal element of $\Max(\overline{\omega_H})$ under $\prec$ is obtained by reading the vertical edges in the natural order along $D$ and sequentially assigning each edge the maximal possible grade which maintains compatibility.  The maximal element of $\Max(\overline{\omega_H})$ is obtained by the same procedure but reading the vertical edges in reverse order.
- \end{remark}
 
  Consider the decomposition $\rsh(\omega_H)=\rsh(h_{j_1};\omega_H)\amalg\cdots\amalg\rsh(h_{j_n};\omega_H)$ from Remark~\ref{rem:remote_shadow_decomposition}.  Write $d_p$ for the ``deepest'' depth appearing in the shadow of $h_{j_p}$, i.e. the index $d_p$ such that 
  \[(h_{j_p}h_{d_p})_1=\max\limits_{d:\rsh(\omega_H)_{j_p;d}\ne\emptyset}(h_{j_p}h_d)_1.\]
@@ -1379,21 +1227,6 @@ Most of the ideas for the proofs in this note were worked out during the author'
 
   
   
-  
- As a first step in proving Proposition~\ref{prop:restricted} we establish Laurentness.
- \begin{lemma}\label{lem:Laurent}
-  For any $P_1$-grading $\omega_H$, $F_{P_2}(X_{\omega_H})$ is given by a Laurent polynomial in $X$ and $Y$.
- \end{lemma}
- To accomplish this we will need to introduce more notation.  We say a vertical edge $v$ has \emph{top degree} in a $P_2$-grading $\omega_V$ if the degree $\omega_V(v)=r_2$ is the degree of $P_2$.  Then we will call a vertical edge $v$ \emph{blocked} by a $P_1$-grading $\omega_H$ if there does not exist a $P_2$-grading $\omega_V$ compatible with $\omega_H$ in which $v$ has top degree.  Notice that the vertical edge of a hook of length $r_2$ can only be blocked because of a non-zero degree of one of the horizontal edges in that hook, whereas the vertical edge of a hook of length $r_2-1$ could be blocked by the last horizontal edge of the preceding hook having degree greater than one.  
- \begin{proof}[Proof of Lemma~\ref{lem:Laurent}]
-  Since $F_{P_2}(X^{\pm1})$ and $F_{P_2}(Y)$ are already Laurent we may restrict our attention to the vertical edges of $D$, these provide the only contribution of $Y^{-1}$ to $X_{\omega_H}$ and the only possibility for Laurentness to fail.  
-
-  By Lemma~\ref{le:shadows} any edge in $V\setminus\sh(\omega_H)$ will not be blocked by $\omega_H$ and thus will contribute a factor $P_2(X)XY^{-1}X^{-1}$ to $X_{\omega_H}$.  Applying $F_{P_2}$ gives
-  \[F_{P_2}(P_2(X)XY^{-1}X^{-1})=XP_2(Y)X^{-1}XYX^{-1}XP_2(Y)^{-1}XY^{-1}X^{-1}=XYXY^{-1}X^{-1},\]
-  which is Laurent.
-
-  Now we focus on the vertical edges in $\sh(\omega_H)$.  For a horizontal edge $h$ with $\omega_H(h)\ne 0$ let $h'$ denote the next (moving to the right) horizontal edge with $\omega_H(h')\ne 0$,  Then write $V(h)$ for the set of vertical edges to the right of $h$ and to the left of $h'$.  Recall that $D_n$ consists of 
- \end{proof}
 
 \section{New Attempt: 2013/11/18}
  We begin with the following important observations.
@@ -1417,65 +1250,7 @@ Most of the ideas for the proofs in this note were worked out during the author'
   \item If $h\in\supp(\omega_H)$ but $\rsh(h;\omega_H)=\emptyset$, then nothing will cancel a $Y$ from its weight.
  \end{itemize} 
  
- \bigskip
-
- For a compatible pair $(\omega_H,\omega_V)\in\cC$ we extend the notation in \eqref{eq:edge weights} defining non-commutative edge weights to assign a non-commutative weight $\wt_{\omega_H,\omega_V}(ee')$ to each subpath $ee'$ of the Dyck path $D$.  This is accomplished by taking the product of edge weights along the path $ee'$:
- \begin{equation}\label{eq:path weights}
-  \wt_{\omega_H,\omega_V}(ee')=\wt_{\omega_H,\omega_V}(e)\cdots\wt_{\omega_H,\omega_V}(e').
- \end{equation}
- \begin{lemma}
-  For any $h\in H$ the weight $\sum\limits_{\omega_V\in M_i(\omega_H)}\wt_{\omega_H,\omega_V}(D(h;\omega_H))$ is Laurent under $K_{P_2}$.
- \end{lemma}
- \begin{proof}
-  We begin in the simplest case where $D(h;\omega_H)$ is minimal, i.e. $\omega_H(h')=0$ for every horizontal edge $h'\ne h$ in $D(h;\omega_H)$.  There are two cases to consider depending on whether or not $D(h;\omega_H)=D_n$.   
-  
-  If $D(h;\omega_H)=D_n$ then $h=h_1$ and $n=0,1,2$.  
-  \begin{itemize}
-   \item For $n=0$ there is nothing to show as $D_0$ consists of a single horizontal edge.  
-   \item For $n=1$ we see that $D_1$ is simply a hook of type 0 (length $r_2$) and there is a unique maximal vertical grading.  In this case $\omega_H(h)\ge1$ and we have
-   \[\sum\limits_{\omega_V\in M_1(\omega_H)}\wt_{\omega_H,\omega_V}(D(h;\omega_H))=p_{\omega_H(h)}Y^{\omega_H(h)}X^{-1}\big(X^{-1}\big)^{r_2-1}P_2^{(r_2-1)}(X)XY^{-1}X^{-1}.\]
-   Applying $K_{P_2}$ to this expression gives
-   \begin{align*}
-    &\Big(P_2(Y)X^{-1}\Big)^{\omega_H(h)-1}P_2^{(r_2-1)}(Y)X^{-1}\big(X^{-1}\big)^{r_1-\omega_H(h)}p_{\omega_H(h)}X^{r_1-\omega_H(h)+1}Y^{-1}X^{-1}\times\\
-    &\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\times\bigg(\big(X^{-1}\big)^{r_1}X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-2}\big(X^{-1}\big)^{r_1-1}X^{r_1+1}Y^{-1}X^{-1}=X'_{M_1'(\varphi^* \omega_H)}.
-   \end{align*}
-   \item For $n=2$ we see that $D_2$ consists of $r_1-1$ hooks of type 0 followed by a hook of type 1 and thus we see that $\omega_H(h)=r_1$.  There exists an index $k$ so that for every $\omega_V\in M_i(\omega_H)$ we have $\omega_V(v_j)=\omega_V^{(i)}(v_j)$ for $j<k$ and there exists $\omega_V\in M_i(\omega_H)$ with $\omega_V(v_j)<\omega_V^{(i)}(v_j)$ for $k\le j\le r_1$.  In this case we have
-  \begin{align*}
-   &\sum\limits_{\omega_V\in M_i(\omega_H)}\wt_{\omega_H,\omega_V}(D(h;\omega_H))
-   =Y^{r_1}X^{-1}\big(X^{-1}\big)^{r_2-1}p_{r_2-1}X^{r_2}Y^{-1}X^{-1}\cdot\Big[\big(X^{-1}\big)^{r_2}X^{r_2+1}Y^{-1}X^{-1}\Big]^{k-2}\times\\
-   &\quad\quad\quad\times\big(X^{-1}\big)^{r_2}P_2^{(r_2-1)}(X)XY^{-1}X^{-1}\cdot\Big[\big(X^{-1}\big)^{r_2}P_2(X)XY^{-1}X^{-1}\Big]^{r_1-k-1}\cdot\big(X^{-1}\big)^{r_2-1}P_2(X)XY^{-1}X^{-1}\\
-   &=Y^{r_1-k+1}P_2^{(r_2-1)}(X)p_{r_2-1}\big(X^{-1}\big)^{r_2}Y^{-1}X^{-1}\cdot\Big[\big(X^{-1}\big)^{r_2}P_2(X)XY^{-1}X^{-1}\Big]^{r_1-k-1}\cdot\big(X^{-1}\big)^{r_2-1}P_2(X)XY^{-1}X^{-1}
-  \end{align*}
-  Then applying $K_{P_2}$ gives
-  \begin{align*}
-   &\big(P_2(Y)X^{-1}\big)^{r_1-k+1}XP_2^{(r_2-1)}(Y)X^{-1}p_{r_2-1}\bigg(\big(X^{-1}\big)^{r_1}X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2}\big(P_2(Y)X^{-1}\big)^{-1}XY^{-1}X^{-1}\times\\
-   &\quad\quad\quad\times\Bigg[\bigg(\big(X^{-1}\big)^{r_1}X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2}XP_2(Y)X^{-1}XYX^{-1}\big(P_2(Y)X^{-1}\big)^{-1}XY^{-1}X^{-1}\Bigg]^{r_1-k-1}\times\\
-   &\quad\quad\quad\quad\quad\quad\times\bigg(\big(X^{-1}\big)^{r_1}X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-1}XP_2(Y)X^{-1}XYX^{-1}\big(P_2(Y)X^{-1}\big)^{-1}XY^{-1}X^{-1}\\
-   &=\Big(P_2(Y)X^{-1}\Big)^{r_1-k}P_2^{(r_2-1)}(Y)X^{-1}p_{r_2-1}\bigg(\big(X^{-1}\big)^{r_1}X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2}X^2Y^{-1}X^{-1}\times\\
-   &\quad\quad\quad\times\Bigg[\bigg(\big(X^{-1}\big)^{r_1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-1}\bigg(\big(X^{-1}\big)^{r_1-1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)\Bigg]^{r_1-k-1}\times\\
-   &\quad\quad\quad\quad\quad\quad\times\bigg(\big(X^{-1}\big)^{r_1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-2}\bigg(\big(X^{-1}\big)^{r_1-1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)\\
-   &\stackrel{\text{Lemma~\ref{le:expansion}}}{=}\Big(P_2(Y)X^{-1}\Big)^{r_1-k}\Big(P_2^{(r_2-1)}(Y)X^{-1}\Big)\Big(Y^{r_2}X^{-1}\Big)^{k-2}\Big(p_{r_2-1}Y^{r_2-1}X^{-1}\Big)\cdot XY^{-1}X^{-1}\times\\
-   &\quad\quad\quad\times \Big(XY^{-1}X^{-1}\Big)^{r_2-2}\Big(X^2Y^{-1}X^{-1}\Big)\bigg(\Big(XY^{-1}X^{-1}\Big)^{r_2-1}\Big(X^2Y^{-1}X^{-1}\Big)\bigg)^{k-2}\times\\
-   &\quad\quad\quad\times\Bigg[\bigg(\big(X^{-1}\big)^{r_1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-1}\bigg(\big(X^{-1}\big)^{r_1-1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)\Bigg]^{r_1-k}\times\\
-   &\quad\quad\quad\quad\quad\quad\times\bigg(\big(X^{-1}\big)^{r_1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-2}\bigg(\big(X^{-1}\big)^{r_1-1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)\\
-   &=\Big(P_2(Y)X^{-1}\Big)^{r_1-k}P_2^{(r_2-1)}(Y)X^{-1}\Big(Y^{r_2}X^{-1}\Big)^{k-2}p_{r_2-1}Y^{r_2-1}X^{-1}\cdot XY^{-1}X^{-1}\times\\
-   &\quad\quad\quad\times \bigg(\big(X^{-1}\big)^{r_1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-2}\bigg(\big(X^{-1}\big)^{r_1-1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg))\times\\
-   &\quad\quad\quad\times\Bigg[\bigg(\big(X^{-1}\big)^{r_1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-1}\bigg(\big(X^{-1}\big)^{r_1-1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)\Bigg]^{r_1-2}\times\\
-   &\quad\quad\quad\quad\quad\quad\times\bigg(\big(X^{-1}\big)^{r_1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)^{r_2-2}\bigg(\big(X^{-1}\big)^{r_1-1}\cdot X^{r_1+1}Y^{-1}X^{-1}\bigg)=X'_{M_1'(\varphi^* \omega_H)}.
-  \end{align*}
-  \end{itemize}
-  
-  \bigskip
-  
-  Now we assume $D(h;\omega_H)\ne D_n$.  It follows from this assumption that $D(h;\omega_H)$ contains exactly $\omega_H(h)$ vertical edges $\nu_1,\ldots,\nu_{\omega_H(h)}$.  There exists an index $k$ so that for every $\omega_V\in M_i(\omega_H)$ we have $\omega_V(\nu_j)=\omega_V^{(i)}(\nu_j)$ for $j<k$ and there exists $\omega_V\in M_i(\omega_H)$ with $\omega_V(\nu_j)<\omega_V^{(i)}(\nu_j)$ for $j\ge k$.  It follows that
-  \begin{align*}
-   &\sum\limits_{\omega_V\in M_i(\omega_H)}\wt_{\omega_H,\omega_V}(D(h;\omega_H))
-   =p_{\omega_H(h)}Y^{\omega_H(h)}X^{-1}\big(X^{-1}\big)^{\omega_V^{(i)}(\nu_1)}p_{\omega_V^{(i)}(\nu_1)}X^{\omega_V^{(i)}(\nu_1)+1}Y^{-1}X^{-1}\times\\
-   &\quad\quad\quad\quad\quad\times\vec\prod_{j=2}^{k-1}\big(X^{-1}\big)^{r_2}p_{\omega_V^{(i)}(\nu_j)}X^{\omega_V^{(i)}(\nu_j)+1}Y^{-1}X^{-1}\vec\prod_{j=k}^{\omega_H(h)-1}\big(X^{-1}\big)^{r_2}P_2^{(\omega_V^{(i)}(\nu_j))}(X)XY^{-1}X^{-1}\times\\
-   &\quad\quad\quad\quad\quad\times
-  \end{align*}
- \end{proof}
-
+ 
 
 
 
