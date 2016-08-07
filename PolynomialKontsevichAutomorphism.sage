@@ -13,10 +13,16 @@ class PolynomialKontsevichAutomorphism(SageObject):
         """
         Change base ring to correspond to changes here
         """
-        self.P1 = [[0,1],[1,1]] #formal polynomial, first coordinate is the exponent, second coordinate is the coefficient
-        self.P1rev = [[0,1],[1,1]]
-        self.P2 = [[0,1],[1,1],[2,1],[3,1],[4,1]]
-        self.P2rev = [[0,1],[1,1],[2,1],[3,1],[4,1]]
+
+        self.P1 = [[0,1],[1,1],[2,1],[3,1]] #formal polynomial, first coordinate is the exponent, second coordinate is the coefficient
+        self.P2 = [[0,1],[1,1],[2,1],[3,1]]
+        self.P1rev = [[0,1],[1,1],[2,1],[3,1]]
+        self.P2rev = [[0,1],[1,1],[2,1],[3,1]]
+
+        #self.P1 = [[0,1],[1,1]]
+        #self.P1rev = [[0,1],[1,1]]
+        #self.P2 = [[0,1],[1,1],[2,1],[3,1],[4,1]]
+        #self.P2rev = [[0,1],[1,1],[2,1],[3,1],[4,1]]
 
         self.comm_matrix = matrix([[0,1],[-1,0]])
         self.comm_matrix.set_immutable()
@@ -88,7 +94,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
         output = ""
 
     
-    def compute_gen_noncomm_variables(self):
+    def compute_gen_noncomm_variables(self,n):
     
             working_dir = "Generalized_Cluster_Variables/NonCommutative/"
             filename = "d1="+str(self.P1[self.P1.__len__()-1][0])+",d2="+str(self.P2[self.P2.__len__()-1][0])+".tex"
@@ -130,9 +136,9 @@ class PolynomialKontsevichAutomorphism(SageObject):
                         if term[0] > 1:
                             self.P2_str += "^{"+str(term[0])+"}"
             TeXFile.write(self.P2_str+"$.\\\\\n\n")
-            for n in range(0,7):
-                TeXFile.write("$Y_{"+str(n+1)+"}=")
-                noncomm_var = self.fsPKont(n)
+            for k in range(0,n+1):
+                TeXFile.write("$Y_{"+str(k)+"}=")
+                noncomm_var = self.fsPKont(k)
                 TeXFile.write(str(noncomm_var)+"$\\\\\n\n")
     
             TeXFile.write("\\end{document}")
