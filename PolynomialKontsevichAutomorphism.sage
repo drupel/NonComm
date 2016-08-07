@@ -27,18 +27,18 @@ class PolynomialKontsevichAutomorphism(SageObject):
         self.X2 = self.B[(0,1)]
         self.X2i = self.B[(0,-1)]
         
-        F.<X,Y,Z> = FreeAlgebra(self.base_ring,3)
+        F.<X,Y,Z> = FreeAlgebra(QQ,3)
+        self.F = F
         self.X = X
         self.Y = Y
         self.Z = Z
-        self.F = F
         self.M = self.F.monoid()
         self.Xi = self.M(1)
         self.Yi = self.M(1)
         self.Zi = self.M(1)
-        self.Xi._element_list.append((1,-1))
-        self.Yi._element_list.append((2,-1))
-        self.Zi._element_list.append((3,-1))
+        self.Xi._element_list.append((0,-1))
+        self.Yi._element_list.append((1,-1))
+        self.Zi._element_list.append((2,-1))
         self.Xi = self.F(self.Xi)
         self.Yi = self.F(self.Yi)
         self.Zi = self.F(self.Zi)
@@ -76,10 +76,10 @@ class PolynomialKontsevichAutomorphism(SageObject):
             for j in range(i+1,bfk.__len__()+1):
                 exp += (j-i)*bfk[j-1]
             if i == 0:
-                output += q^exp*quantum_multinomial(n-1,bfk,q)
+                output += q^exp*self.quantum_multinomial(n-1,bfk,q)
             else:
                 bfk[i-1] -= 1
-                output += q^exp*quantum_multinomial(n-1,bfk,q)
+                output += q^exp*self.quantum_multinomial(n-1,bfk,q)
                 bfk[i-1] += 1
         return output
     
@@ -187,7 +187,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             for n in range(0,7):
                 TeXFile.write("$X_{"+str(n+1)+"}=")
                 noncomm_var = self.fsPKont(n)
-                quantum_var = quantum_specialization(noncomm_var,self.P1)
+                quantum_var = self.quantum_specialization(noncomm_var,self.P1)
                 TeXFile.write(self.A.latex_element(quantum_var)+"$\\\\\n\n")
     
             TeXFile.write("\\end{document}")
@@ -210,30 +210,30 @@ class PolynomialKontsevichAutomorphism(SageObject):
             TeXFile.write("\\newcommand{\\JJ}{\\mathbb{J}}\n\n")
             TeXFile.write("\\begin{document}\n\n")
             TeXFile.write("Let $P_1=")
-            self.P1_str = ""
+            P1_str = ""
             for term in self.P1:
                 if term[0] == 0:
-                    self.P1_str += "1"
+                    P1_str += "1"
                 else:
                     if term[1] != 0:
-                        self.P1_str += "+z"
+                        P1_str += "+z"
                         if term[0] > 1:
-                            self.P1_str += "^{"+str(term[0])+"}"
-            TeXFile.write(self.P1_str+"$ and $P_2=")
-            self.P2_str = ""
+                            P1_str += "^{"+str(term[0])+"}"
+            TeXFile.write(P1_str+"$ and $P_2=")
+            P2_str = ""
             for term in self.P2:
                 if term[0] == 0:
-                    self.P2_str += "1"
+                    P2_str += "1"
                 else:
                     if term[1] != 0:
-                        self.P2_str += "+z"
+                        P2_str += "+z"
                         if term[0] > 1:
-                            self.P2_str += "^{"+str(term[0])+"}"
-            TeXFile.write(self.P2_str+"$.\\\\\n\n")
+                            P2_str += "^{"+str(term[0])+"}"
+            TeXFile.write(P2_str+"$.\\\\\n\n")
             for n in range(0,7):
                 TeXFile.write("$X_{"+str(n+1)+"}=")
                 noncomm_var = self.fsPKont(n)
-                quantum_var = quantum_specialization(noncomm_var,self.P1)
+                quantum_var = self.quantum_specialization(noncomm_var,self.P1)
     
                 sup = quantum_var.support()
                 rank_vector = [-sup[0][0],-sup[0][1]]
@@ -321,7 +321,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
                 return output
             mon_coeff = element._monomial_coefficients
             for key in mon_coeff.keys():
-                output = output + mon_coeff[key]*quantum_specialization(key,pol)
+                output = output + mon_coeff[key]*self.quantum_specialization(key,pol)
     
     
             d1 = self.P1[self.P1.__len__()-1][0]
@@ -392,9 +392,9 @@ class PolynomialKontsevichAutomorphism(SageObject):
         Kont_pair = [_X,_Y]
         for i in range(0,n):
             if i%2 == 0:
-                Kont_pair = Pexternal_Kont(Kont_pair,P1)
+                Kont_pair = self.Pexternal_Kont(Kont_pair,P1)
             else:
-                Kont_pair = Pexternal_Kont(Kont_pair,P2)
+                Kont_pair = self.Pexternal_Kont(Kont_pair,P2)
         return Kont_pair
     
     
@@ -440,20 +440,20 @@ class PolynomialKontsevichAutomorphism(SageObject):
         if element.parent() == self.M:
             output = self.F(1)
             for (i,j) in element._element_list:
-                if i == 1:
+                if i == 0:
                     if j > 0:
                         output = output*(kont_X^j)
                     if j < 0:
                         output = output*(kont_Xi^(-j))
-                if i == 2:
+                if i == 1:
                     if j > 0:
                         output = output*(kont_Y^j)
                     if j < 0:
                         for k in range(0,-j):
                             output = output*self.X*self.Zi
-                if i == 3:
+                if i == 2:
                     if j > 0:
-                        self.P2_factor = self.F(0)
+                        P2_factor = self.F(0)
                         for term in P2:
                             P2_factor += term[1]*kont_Y^term[0]
                         output = output*P2_factor^j
@@ -466,7 +466,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             mon_coeff = element._monomial_coefficients
             for key in mon_coeff.keys():
                 output = output + mon_coeff[key]*self.fsPKont_term(key,P1,P2)
-            
+
             return self.Psimplify(output,P1)
     
     def Pexpand(self, element, P):
@@ -505,7 +505,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
                 return output
             mon_coeff = element._monomial_coefficients
             for key in mon_coeff.keys():
-                output = output + mon_coeff[key]*Pexpand(key,P)
+                output = output + mon_coeff[key]*self.Pexpand(key,P)
     
         return output
     
@@ -555,6 +555,8 @@ class PolynomialKontsevichAutomorphism(SageObject):
                 if suffix_dict.has_key(div[1]):
                     suffix_dict[div[1]] = suffix_dict[div[1]] + mon_coeff[key]*self.F(div[0])
                 else:
+                    #print type(mon_coeff[key])
+                    #print div[0].parent()
                     suffix_dict.setdefault(div[1],mon_coeff[key]*self.F(div[0]))
                     
             #print "Applying Kont to non-negative Y degree prefixes"
@@ -569,10 +571,10 @@ class PolynomialKontsevichAutomorphism(SageObject):
             
             #print "Kont applied to non-negative Y degree prefixes, moving to suffixes"
                 
-            Keys = Kont_dict.keys()
-            Keys.sort()
-            while Keys != [self.M(1)]:
-                key = Keys.pop()
+            keys = Kont_dict.keys()
+            keys.sort()
+            while keys != [self.M(1)]:
+                key = keys.pop()
                 entry = Kont_dict.pop(key)
                 elt_list = key._element_list
                 (i,j) = elt_list.pop(0)
@@ -621,7 +623,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
                     switch = false
                     suffix._element_list.append(elt)
                     
-        return [prefix,suffix]
+        return tuple([prefix,suffix])
         
     def commute(self, element):
         #element belongs to the monoid M, commute Y's and Z's, move Y's to the left
@@ -659,7 +661,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
                         output._element_list.append(factor)
         return output
         
-    def Psimplify(self, element,P):
+    def Psimplify(self, element, P):
         """
         Input:
             -an element of F
@@ -711,7 +713,7 @@ class PolynomialKontsevichAutomorphism(SageObject):
             
             return suffix_dict[self.M(1)]
     
-    def Polynomial_right_divide(self, element,P):
+    def Polynomial_right_divide(self, element, P):
         """
         Input:
             -an element of F
@@ -747,12 +749,12 @@ class PolynomialKontsevichAutomorphism(SageObject):
             P.sort()
             P.reverse()
             leading_term = P[0]
-            div = trailing_Y_dict.pop(max_Y_exp)*Yi^leading_term[0]
+            div = trailing_Y_dict.pop(max_Y_exp)*self.Yi^leading_term[0]
             #print "div",div
             output = output + div
             for i in range(1,P.__len__()):
                 term = P[i]
-                trailing_Y_dict[max_Y_exp-leading_term[0]+term[0]] = trailing_Y_dict[max_Y_exp-leading_term[0]+term[0]] - term[1]*div*Y^term[0]
+                trailing_Y_dict[max_Y_exp-leading_term[0]+term[0]] = trailing_Y_dict[max_Y_exp-leading_term[0]+term[0]] - term[1]*div*self.Y^term[0]
                 if trailing_Y_dict[max_Y_exp-leading_term[0]+term[0]] == self.F(0):
                     trailing_Y_dict.pop(max_Y_exp-leading_term[0]+term[0])
     
@@ -776,5 +778,5 @@ class PolynomialKontsevichAutomorphism(SageObject):
                     switch = false
                     suffix._element_list.append([i,j])
                     
-        return [prefix,suffix]
+        return tuple([prefix,suffix])
     
